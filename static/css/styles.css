@@ -56,3 +56,22 @@ body {
             color: #007B00;
             font-size: 1.1em;
         }
+        button {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            padding: 12px 24px; /* Spacing */
+            font-size: 16px; /* Bigger text */
+            border: none; /* Remove default border */
+            border-radius: 8px; /* Rounded corners */
+            cursor: pointer; /* Pointer on hover */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Slightly darker green */
+            transform: scale(1.05); /* Subtle zoom effect */
+        }
+
+        button:active {
+            transform: scale(0.98); /* Press effect */
+        }
