@@ -9,3 +9,14 @@ class Config:
   DEBUG = True
   HOST = "0.0.0.0"
   PORT = 8899
+
+
+## Webshop aufrufen
+
+### Virtual Environment installieren und starten (Terminal Prompts)
+python -m venv venv
+cd venv
+source bin/activate
+(In neuem Terminal) python main.py
+
+Dann Localhost aufrufen
