@@ -14,10 +14,10 @@ class Config:
 ## Webshop aufrufen
 
 ### Virtual Environment installieren und starten (Terminal Prompts)
-python -m venv venv
-cd venv
-source bin/activate
-pip install flask
-(In neuem Terminal) python main.py
+- python -m venv venv  
+- cd venv  
+- source bin/activate  
+- pip install flask  
+- (In neuem Terminal) python main.py  
 
 Dann Localhost aufrufen
