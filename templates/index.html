@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 
+
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body>
+
 {% block content %}
 
 <h1>Willkommen zu unserem Webshop</h1>
+<a href="{{ url_for('index.catalog') }}">
+    <button type="button">Zum Katalog</button>
+</a>
+
 {% endblock %}
+
+</body>
+
+</html>

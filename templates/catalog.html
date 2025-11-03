@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body>
+
+{% block content %}
+
+<h1>Willkommen zu unserem Webshop</h1>
+
+<div class="catalog">
+
+    <!-- Artikel 1 -->
+    <div class="item">
+        <img src="static/images/fc-1.jpg" alt="Artikel 1" class="thumbnail">
+        <div class="info">
+            <div class="artikelnummer">Artikel-Nr: FC-001</div>
+            <div class="beschreibung">Feiner Couchtisch aus Eichenholz, modern und robust.</div>
+            <div class="preis">€ 199,00</div>
+        </div>
+    </div>
+
+    <!-- Artikel 2 -->
+    <div class="item">
+        <img src="static/images/fc-2.jpg" alt="Artikel 2" class="thumbnail">
+        <div class="info">
+            <div class="artikelnummer">Artikel-Nr: FC-002</div>
+            <div class="beschreibung">Komfortabler Sessel mit Stoffbezug, ideal fürs Wohnzimmer.</div>
+            <div class="preis">€ 249,00</div>
+        </div>
+    </div>
+
+    <!-- Artikel 3 -->
+    <div class="item">
+        <img src="static/images/fc-3.jpg" alt="Artikel 3" class="thumbnail">
+        <div class="info">
+            <div class="artikelnummer">Artikel-Nr: FC-003</div>
+            <div class="beschreibung">Elegante Stehlampe mit Metallfuß und Stoffschirm.</div>
+            <div class="preis">€ 89,00</div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+</body>
+
+</html>
