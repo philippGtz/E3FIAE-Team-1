@@ -17,6 +17,7 @@ class Config:
 python -m venv venv
 cd venv
 source bin/activate
+pip install flask
 (In neuem Terminal) python main.py
 
 Dann Localhost aufrufen
