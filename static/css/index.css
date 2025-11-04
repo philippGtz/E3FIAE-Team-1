@@ -70,6 +70,8 @@ body {
             border-radius: 8px; /* Rounded corners */
             cursor: pointer; /* Pointer on hover */
             transition: background-color 0.3s ease, transform 0.2s ease;
+            display: block;
+            margin: 0 auto;
         }
 
         button:hover {

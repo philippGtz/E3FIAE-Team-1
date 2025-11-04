@@ -1,0 +1,61 @@
+/* Navigation Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .icons {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar .icon-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.navbar .icon-link:hover {
+    color: #007bff;
+}
+
+/* Catalog Styling */
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.info {
+    margin-top: 10px;
+}
+
+.artikelnummer,
+.beschreibung,
+.preis {
+    margin: 5px 0;
+}
