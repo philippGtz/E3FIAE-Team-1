@@ -33,7 +33,7 @@ class Config:
 **Alternativ als Terminal Eingabe:**
 
 ```bash
-git clone https://github.com/<BENUTZER>/<REPOSITORY>.git
+https://github.com/philippGtz/E3FIAE-Team-1
 ```
 
 ### 2. Virtual Environment installieren und starten
