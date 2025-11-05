@@ -14,7 +14,7 @@ class Config:
 ## Webshop aufrufen
 
 ### 1. Git-Repository in VS Code klonen  
-
+--> Hierfür muss GIT lokal installiert sein: https://git-scm.com/download/win   -   die Installation/Version kann mit <git --version> in der cli überprüft werden
 - Öffne Visual Studio Code.  
 - Klicke auf Quellcodeverwaltung (linke Seitenleiste, Symbol mit drei verbundenen Punkten).  
 - Wähle Repository klonen.  
@@ -23,25 +23,28 @@ class Config:
 - Wähle den Zielordner auf deinem Rechner.  
 - Öffne den geklonten Ordner in VS Code.
 
-(Alternativ als Terminal Eingabe: git clone https://github.com/<BENUTZER>/<REPOSITORY>.git
+(Alternativ als Terminal Eingabe: <git clone https://github.com/<BENUTZER>/<REPOSITORY>.git>
   
 ### 2. Virtual Environment installieren und starten
 
 
 Die Einrichtung und das Starten des Virtual Environment und dem Modul "flask" erfolgt auf Windows durch folgende Eingaben in das Terminal:  
 
-- python -m venv venv  
-- cd venv  
-- source bin/activate  
-- pip install flask  
-- (In neuem Terminal) python main.py  
+- <python -m venv venv>
+- <cd venv>  
+- <source bin/activate>
+- <pip install flask>  
+- <python main.py> (empf. in einem neuem Terminal)  
 
-Dann Localhost aufrufen: http://127.0.0.1:XXXX (wird im Terminal als Link vorgegeben)
+Dann Localhost aufrufen: http://127.0.0.1:XXXX (wird nach Ausführung von <python main.py> im Terminal als Link vorgegeben)
 
-Auf Mac sind hingegen folgende Terminal Prompts nötig:  
+Auf Mac sind hingegen folgende Terminal Befehle nötig:  
 
-- python3 -m venv venv
-- source venv/bin/activate
-- pip install flask  
-- pip freeze > requirements.txt
-- python main.py
+- <python3 -m venv venv>
+- <source venv/bin/activate>
+- <pip install flask>  
+- <pip freeze > requirements.txt>
+- <python main.py>
+
+
+PS: Alle Befehle sind ohne '<>' einzugeben! 
