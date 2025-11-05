@@ -25,7 +25,7 @@ class Config:
 - Wähle **Repository klonen**
 - Gib die URL deines Git-Repositories ein, z. B.:
   ```
-  https://github.com/dein-benutzername/dein-repo.git
+  https://github.com/philippGtz/E3FIAE-Team-1
   ```
 - Wähle den Zielordner auf deinem Rechner
 - Öffne den geklonten Ordner in VS Code
