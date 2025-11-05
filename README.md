@@ -1,50 +1,72 @@
 # Doku
 
-
 ## Config
 
-Fülle die fehlenden Werte in der config_samples.py und nenne die datei in config.py um.  
-Eine Beispiel config.py sieht so aus:   
-class Config:  
-    DEBUG = True  
-    HOST = "0.0.0.0"  
-    PORT = 8899
+Fülle die fehlenden Werte in der `config_samples.py` und nenne die Datei in `config.py` um.
 
+Eine Beispiel `config.py` sieht so aus:
+
+```python
+class Config:
+    DEBUG = True
+    HOST = "0.0.0.0"
+    PORT = 8899
+```
 
 ## Webshop aufrufen
 
-### 1. Git-Repository in VS Code klonen  
---> Hierfür muss GIT lokal installiert sein: https://git-scm.com/download/win   -   die Installation/Version kann mit <git --version> in der cli überprüft werden
-- Öffne Visual Studio Code.  
-- Klicke auf Quellcodeverwaltung (linke Seitenleiste, Symbol mit drei verbundenen Punkten).  
-- Wähle Repository klonen.  
-- Gib die URL deines Git-Repositories ein, z. B.:  
-  https://github.com/dein-benutzername/dein-repo.git
-- Wähle den Zielordner auf deinem Rechner.  
-- Öffne den geklonten Ordner in VS Code.
+### 1. Git-Repository in VS Code klonen
 
-(Alternativ als Terminal Eingabe: <git clone https://github.com/<BENUTZER>/<REPOSITORY>.git>
-  
+> Hierfür muss GIT lokal installiert sein: https://git-scm.com/download/win
+> Die Installation/Version kann mit `git --version` in der CLI überprüft werden
+
+- Öffne Visual Studio Code
+- Klicke auf Quellcodeverwaltung (linke Seitenleiste, Symbol mit drei verbundenen Punkten)
+- Wähle **Repository klonen**
+- Gib die URL deines Git-Repositories ein, z. B.:
+  ```
+  https://github.com/dein-benutzername/dein-repo.git
+  ```
+- Wähle den Zielordner auf deinem Rechner
+- Öffne den geklonten Ordner in VS Code
+
+**Alternativ als Terminal Eingabe:**
+
+```bash
+git clone https://github.com/<BENUTZER>/<REPOSITORY>.git
+```
+
 ### 2. Virtual Environment installieren und starten
 
+#### Auf Windows
 
-Die Einrichtung und das Starten des Virtual Environment und dem Modul "flask" erfolgt auf Windows durch folgende Eingaben in das Terminal:  
+Folgende Eingaben im Terminal durchführen:
 
-- <python -m venv venv>
-- <cd venv>  
-- <source bin/activate>
-- <pip install flask>  
-- <python main.py> (empf. in einem neuem Terminal)  
+```bash
+python -m venv venv
+cd venv
+source bin/activate
+pip install flask
+python main.py
+```
 
-Dann Localhost aufrufen: http://127.0.0.1:XXXX (wird nach Ausführung von <python main.py> im Terminal als Link vorgegeben)
+> Empfehlung: `python main.py` in einem neuem Terminal ausführen
 
-Auf Mac sind hingegen folgende Terminal Befehle nötig:  
+Dann Localhost aufrufen: `http://127.0.0.1:XXXX`
+(Der Link wird nach Ausführung von `python main.py` im Terminal vorgegeben)
 
-- <python3 -m venv venv>
-- <source venv/bin/activate>
-- <pip install flask>  
-- <pip freeze > requirements.txt>
-- <python main.py>
+#### Auf macOS
 
+Folgende Terminal Befehle sind nötig:
 
-PS: Alle Befehle sind ohne '<>' einzugeben! 
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install flask
+pip freeze > requirements.txt
+python main.py
+```
+
+---
+
+**Hinweis:** Alle Befehle sind ohne die Backticks (`) einzugeben!
