@@ -12,7 +12,7 @@
 - Öffne Visual Studio Code
 - Klicke auf Quellcodeverwaltung (linke Seitenleiste, Symbol mit drei verbundenen Punkten)
 - Wähle **Repository klonen**
-- Gib die URL deines Git-Repositories ein, z. B.:
+- Gib die URL deines Git-Repositories ein:
   ```
   https://github.com/philippGtz/E3FIAE-Team-1
   ```
