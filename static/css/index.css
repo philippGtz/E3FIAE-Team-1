@@ -41,23 +41,23 @@ body {
 
 
         button {
-            background-color: #007B00; /* Green background */
-            color: white; /* White text */
-            padding: 12px 24px; /* Spacing */
-            font-size: 16px; /* Bigger text */
-            border: none; /* Remove default border */
-            border-radius: 8px; /* Rounded corners */
-            cursor: pointer; /* Pointer on hover */
+            background-color: #007B00;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
             display: block;
             margin: 0 auto;
         }
 
         button:hover {
-            background-color: #45a049; /* Slightly darker green */
-            transform: scale(1.05); /* Subtle zoom effect */
+            background-color: #45a049;
+            transform: scale(1.05);
         }
 
         button:active {
-            transform: scale(0.98); /* Press effect */
+            transform: scale(0.98);
         }
