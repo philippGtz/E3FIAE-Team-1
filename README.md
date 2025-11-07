@@ -19,6 +19,9 @@ class Config:
 
 > Hierfür muss GIT lokal installiert sein: https://git-scm.com/download/win
 > Die Installation/Version kann mit `git --version` in der CLI überprüft werden
+> Ebenfalls muss Python installiert sein: https://www.python.org/downloads/windows/
+> „Add Python to PATH“ aktivieren → Installation abschließen
+> Die Installation kann im Anschluss wiefolgt geprpüft werden: python --version pip --version
 
 - Öffne Visual Studio Code
 - Klicke auf Quellcodeverwaltung (linke Seitenleiste, Symbol mit drei verbundenen Punkten)
@@ -27,7 +30,7 @@ class Config:
   ```
   https://github.com/philippGtz/E3FIAE-Team-1
   ```
-- Wähle den Zielordner auf deinem Rechner
+- Wähle den Zielordner auf deinem Rechner: cd E3FIAE-Team-1
 - Öffne den geklonten Ordner in VS Code
 
 **Alternativ als Terminal Eingabe:**
@@ -44,8 +47,7 @@ Folgende Eingaben im Terminal durchführen:
 
 ```bash
 python -m venv venv
-cd venv
-source bin/activate
+venv\Scripts\activate
 pip install flask
 python main.py
 ```
