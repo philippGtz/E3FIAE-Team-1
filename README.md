@@ -36,7 +36,7 @@ class Config:
 **Alternativ als Terminal Eingabe:**
 
 ```bash
-https://github.com/philippGtz/E3FIAE-Team-1
+git clone https://github.com/philippGtz/E3FIAE-Team-1
 ```
 
 ### 2. Virtual Environment installieren und starten
