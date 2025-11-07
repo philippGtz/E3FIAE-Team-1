@@ -35,32 +35,11 @@ body {
             transform: translateY(-4px);
         }
 
-        .thumbnail {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
         .info {
             padding: 15px;
         }
 
-        .artikelnummer {
-            color: #666;
-            font-size: 0.9em;
-        }
 
-        .beschreibung {
-            margin: 10px 0;
-            font-size: 1em;
-            color: #333;
-        }
-
-        .preis {
-            font-weight: bold;
-            color: #007B00;
-            font-size: 1.1em;
-        }
         button {
             background-color: #007B00; /* Green background */
             color: white; /* White text */
