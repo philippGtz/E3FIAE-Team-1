@@ -52,6 +52,10 @@ body {
             display: block;
             margin: 0 auto;
         }
+        
+        a {
+            text-decoration: none; /* Entfernt Unterstrich */
+        }
 
         button:hover {
             background-color: #45a049;
