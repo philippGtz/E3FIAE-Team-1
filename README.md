@@ -1,18 +1,5 @@
 # Doku
 
-## Config
-
-Fülle die fehlenden Werte in der `config_samples.py` und nenne die Datei in `config.py` um.
-
-Eine Beispiel `config.py` sieht so aus:
-
-```python
-class Config:
-    DEBUG = True
-    HOST = "0.0.0.0"
-    PORT = 8899
-```
-
 ## Webshop aufrufen
 
 ### 1. Git-Repository in VS Code klonen
@@ -30,13 +17,25 @@ class Config:
   ```
   https://github.com/philippGtz/E3FIAE-Team-1
   ```
-- Wähle den Zielordner auf deinem Rechner: cd E3FIAE-Team-1
-- Öffne den geklonten Ordner in VS Code
-
 **Alternativ als Terminal Eingabe:**
 
 ```bash
 git clone https://github.com/philippGtz/E3FIAE-Team-1
+```
+- Wähle den Zielordner auf deinem Rechner: cd E3FIAE-Team-1
+- Öffne den geklonten Ordner in VS Code
+
+## Config
+
+Fülle die fehlenden Werte in der `config_samples.py` und nenne die Datei in `config.py` um.
+
+Eine Beispiel `config.py` sieht so aus:
+
+```python
+class Config:
+    DEBUG = True
+    HOST = "0.0.0.0"
+    PORT = 8899
 ```
 
 ### 2. Virtual Environment installieren und starten
