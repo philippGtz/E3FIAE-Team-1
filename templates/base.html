@@ -62,22 +62,23 @@
 </head>
 
 <body>
-  <!-- Hamburger Header -->
+  <!-- Burger Header -->
   <div class="hamburger-container">
     <button id="hamburger-menu-btn" class="hamburger-menu-btn">☰</button>
     <a href="{{ url_for('index.index') }}" class="logo-section" style="text-decoration: none; color: #333; cursor: pointer;">Webshop</a>
     <div style="width: 40px;"></div>
   </div>
 
-  <!-- Sidebar Menu Overlay -->
+  <!-- Burger Menu Overlay -->
   <div id="sidebar-menu-overlay" class="sidebar-menu-overlay"></div>
 
-  <!-- Sidebar Menu -->
+  <!-- Burger Menu offen -->
   <nav id="sidebar-menu" class="sidebar-menu">
     <ul class="sidebar-menu-items">
       <li><a href="{{ url_for('index.catalog') }}">Katalog</a></li>
       <li><a href="#bestellungen">Bestellungen</a></li>
-      <li><a href="{{ url_for('index.profile') }}" class="profile-link">Profil</a></li>
+      <li><a href="#profil" class="profile-link">Profil</a></li>
+  <!--href="{{ url_for('index.profile') }}"-->
     </ul>
 
     <!-- Auth Section -->
