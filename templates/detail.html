@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+
+<div class="container">
+    <a class="back" href="javascript:history.back()">← Zurück</a>
+    <article class="card" role="article" aria-labelledby="title">
+        <div class="layout">
+            {% if item.bc_image %}
+            <div class="media" aria-hidden="false">
+                <img src="{{ url_for('static', filename='images/' + item.bc_image) }}" alt="{{ item.bc_material }}">
+            </div>
+            {% endif %}
+            <div class="content">
+                <h1 id="title">{{ item.bc_material or 'Kein Titel' }}</h1>
+                {% if item.bc_material_desc_short %}
+                    <div class="summary">{{ item.bc_material_desc_short }}</div>
+                {% endif %}
+                <p class="description">{{ item.bc_material_desc_long or 'Keine Beschreibung vorhanden.' }}</p>
+            </div>
+        </div>
+    </article>
+</div>
+
+{% endblock %}

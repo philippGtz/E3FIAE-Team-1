@@ -1,0 +1,7 @@
+venv/
+.venv/
+instance/
+*.pyc
+config.py
+config_samples.py
+.DS_Store

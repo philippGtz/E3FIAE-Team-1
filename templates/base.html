@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hamburger.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-menu-btn');
+            const sidebarMenu = document.getElementById('sidebar-menu');
+            const menuOverlay = document.getElementById('sidebar-menu-overlay');
+            
+            hamburgerBtn.addEventListener('click', function() {
+                sidebarMenu.classList.toggle('open');
+                menuOverlay.classList.toggle('open');
+            });
+
+            menuOverlay.addEventListener('click', function() {
+                sidebarMenu.classList.remove('open');
+                menuOverlay.classList.remove('open');
+            });
+
+            const menuLinks = document.querySelectorAll('.sidebar-menu-items a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    sidebarMenu.classList.remove('open');
+                    menuOverlay.classList.remove('open');
+                });
+            });
+
+            const loginBtn = document.getElementById('login-btn-menu');
+            const popup = document.getElementById('login-popup');
+            const overlay = document.getElementById('popup-overlay');
+            const closeBtn = document.getElementById('close-popup');
+
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    popup.style.display = 'block';
+                    overlay.style.display = 'block';
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    popup.style.display = 'none';
+                    overlay.style.display = 'none';
+                });
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    popup.style.display = 'none';
+                    overlay.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+  <!-- Hamburger Header -->
+  <div class="hamburger-container">
+    <button id="hamburger-menu-btn" class="hamburger-menu-btn">☰</button>
+    <a href="{{ url_for('index.index') }}" class="logo-section" style="text-decoration: none; color: #333; cursor: pointer;">Webshop</a>
+    <div style="width: 40px;"></div>
+  </div>
+
+  <!-- Sidebar Menu Overlay -->
+  <div id="sidebar-menu-overlay" class="sidebar-menu-overlay"></div>
+
+  <!-- Sidebar Menu -->
+  <nav id="sidebar-menu" class="sidebar-menu">
+    <ul class="sidebar-menu-items">
+      <li><a href="{{ url_for('index.catalog') }}">Katalog</a></li>
+      <li><a href="#bestellungen">Bestellungen</a></li>
+      <li><a href="{{ url_for('index.profile') }}" class="profile-link">Profil</a></li>
+    </ul>
+
+    <!-- Auth Section -->
+    <div class="menu-auth-section">
+      {% if session.get('user_email') %}
+        <div class="user-email">{{ session.get('user_email') }}</div>
+        <a href="{{ url_for('index.logout') }}" class="logout-btn">Logout</a>
+      {% else %}
+        <button id="login-btn-menu" class="login-btn-menu">Login</button>
+      {% endif %}
+    </div>
+  </nav>
+
+  <div id="popup-overlay" class="popup-overlay"></div>
+
+  <div id="login-popup" class="popup">
+      <button id="close-popup" class="close-popup">&times;</button>
+      <h2>Login</h2>
+      <form action="{{ url_for('index.login') }}" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+  </div>
+
+    {% block content %}
+    {% endblock %}
+
+  <!-- Git Info Footer -->
+  <div class="git-info">
+    {% if commit_id %}
+        <div><strong>Commit:</strong> {{ commit_id[:8] }}</div>
+        <div><strong>Tag:</strong> {{ git_tag if git_tag else 'N/A' }}</div>
+    {% else %}
+        <div><em>Git info unavailable</em></div>
+    {% endif %}
+  </div>
+
+</body>
+
+</html>

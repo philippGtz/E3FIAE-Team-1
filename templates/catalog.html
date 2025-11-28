@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Willkommen in unserem Webshop</h1>
+
+<div class="catalog">
+    {% for item in items %}
+    <a href="{{ url_for('index.detail', item_id=item.bc_id) }}" class="item">
+        {% if item.bc_image %}
+            <img src="{{ url_for('static', filename='images/' + item.bc_image) }}" alt="{{ item.bc_material }}" class="item-image">
+        {% else %}
+            <div class="item-image placeholder">Kein Bild</div>
+        {% endif %}
+        <div class="info">
+            <div class="artikelnummer">Artikel-Nr: {{ item.bc_id }}</div>
+            <div class="titel">{{ item.bc_material }}</div>
+            <div class="beschreibung">{{ item.bc_material_desc_short }}</div>
+            <div class="preis">€ 199,00</div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
