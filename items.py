@@ -192,7 +192,9 @@ def initialize_database(app):
 
         user = Users(
             email="admin@example.com",
-            password="password"
+            password="password",
+            address="Parkstrasse 7, 69168 Wiesloch",
+            iban="DE89370400440532013000"
         )
 
         db.session.add(user)
