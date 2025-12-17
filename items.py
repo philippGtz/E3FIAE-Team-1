@@ -194,7 +194,8 @@ def initialize_database(app):
             email="admin@example.com",
             password="password",
             address="Parkstrasse 7, 69168 Wiesloch",
-            iban="DE89370400440532013000"
+            iban="DE89370400440532013000",
+            phone_number="01234567890"
         )
 
         db.session.add(user)
