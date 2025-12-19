@@ -8,57 +8,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburgerBtn = document.getElementById('hamburger-menu-btn');
-            const sidebarMenu = document.getElementById('sidebar-menu');
-            const menuOverlay = document.getElementById('sidebar-menu-overlay');
-            
-            hamburgerBtn.addEventListener('click', function() {
-                sidebarMenu.classList.toggle('open');
-                menuOverlay.classList.toggle('open');
-            });
-
-            menuOverlay.addEventListener('click', function() {
-                sidebarMenu.classList.remove('open');
-                menuOverlay.classList.remove('open');
-            });
-
-            const menuLinks = document.querySelectorAll('.sidebar-menu-items a');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    sidebarMenu.classList.remove('open');
-                    menuOverlay.classList.remove('open');
-                });
-            });
-
-            const loginBtn = document.getElementById('login-btn-menu');
-            const popup = document.getElementById('login-popup');
-            const overlay = document.getElementById('popup-overlay');
-            const closeBtn = document.getElementById('close-popup');
-
-            if (loginBtn) {
-                loginBtn.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    popup.style.display = 'block';
-                    overlay.style.display = 'block';
-                });
-            }
-
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    popup.style.display = 'none';
-                    overlay.style.display = 'none';
-                });
-            }
-
-            if (overlay) {
-                overlay.addEventListener('click', function() {
-                    popup.style.display = 'none';
-                    overlay.style.display = 'none';
-                });
-            }
-        });
-    </script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const loginBtn = document.getElementById('login-btn-menu');
+          const popup = document.getElementById('login-popup');
+          const overlay = document.getElementById('popup-overlay');
+          const closeBtn = document.getElementById('close-popup');
+  
+          const isLoggedIn = "{{ 'true' if session.get('user_email') else 'false' }}";
+  
+          if (isLoggedIn === "true") {
+              if (popup) popup.style.display = 'none';
+              if (overlay) overlay.style.display = 'none';
+          }
+  
+          if (loginBtn) {
+              loginBtn.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  if (popup) popup.style.display = 'block';
+                  if (overlay) overlay.style.display = 'block';
+              });
+          }
+  
+          if (closeBtn) {
+              closeBtn.addEventListener('click', function() {
+                  if (popup) popup.style.display = 'none';
+                  if (overlay) overlay.style.display = 'none';
+              });
+          }
+  
+          if (overlay) {
+              overlay.addEventListener('click', function() {
+                  if (popup) popup.style.display = 'none';
+                  if (overlay) overlay.style.display = 'none';
+              });
+          }
+      });
+  </script>
 </head>
 
 <body>
@@ -94,7 +79,7 @@
   <div id="popup-overlay" class="popup-overlay"></div>
 
   <div id="login-popup" class="popup">
-      <button id="close-popup" class="close-popup">&times;</button>
+      <!-- <button id="close-popup" class="close-popup">&times;</button> -->
       <h2>Login</h2>
       <form action="{{ url_for('index.login') }}" method="POST">
         <input type="email" name="email" placeholder="Email" required>
