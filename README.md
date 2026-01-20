@@ -44,7 +44,7 @@ Folgende Eingaben im Terminal durchführen:
 python -m venv venv
 venv\Scripts\activate
 pip install flask
-pip freeze > requirements.txt
+pip install -r requirements.txt
 python main.py
 ```
 > Empfehlung: `python main.py` in einem neuem Terminal ausführen
