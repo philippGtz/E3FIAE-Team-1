@@ -18,7 +18,9 @@
         <p><strong>IBAN:</strong> {{ user.iban }}</p>
     </div>
 
-    <a href="{{ url_for('index.catalog') }}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; align-items: center;">Zum Katalog</a>
+    <div style="text-align: center;">
+        <a href="{{ url_for('index.catalog') }}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; align-items: center;">Zum Katalog</a>
+    </div>
 </div>
 
 {% endblock %}
