@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for, flash, session
-from models import Users, db, BikeComputers
+from models import Users, db, BikeComputers, Orders
 
 bp_index = Blueprint('index', __name__)
 
@@ -91,3 +91,15 @@ def profile():
         return redirect(url_for('index.index'))
     
     return render_template('profile.html', user=user)
+
+
+@bp_index.route('/orders')
+def orders():
+    if 'user_id' not in session:
+        flash('Bitte melden Sie sich zunächst an.', 'warning')
+        return redirect(url_for('index.index'))
+    
+    user_id = session.get('user_id')
+    orders = Orders.query.filter_by(user_id=user_id).all()
+    
+    return render_template('orders.html', orders=orders)
