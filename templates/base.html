@@ -9,6 +9,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+          const hamburgerBtn = document.getElementById('hamburger-menu-btn');
+          const sidebarMenu = document.getElementById('sidebar-menu');
+          const sidebarOverlay = document.getElementById('sidebar-menu-overlay');
+          
+          if (hamburgerBtn) {
+              hamburgerBtn.addEventListener('click', function() {
+                  sidebarMenu.classList.toggle('open');
+                  sidebarOverlay.classList.toggle('open');
+              });
+          }
+          
+          if (sidebarOverlay) {
+              sidebarOverlay.addEventListener('click', function() {
+                  sidebarMenu.classList.remove('open');
+                  sidebarOverlay.classList.remove('open');
+              });
+          }
+
           const loginBtn = document.getElementById('login-btn-menu');
           const popup = document.getElementById('login-popup');
           const overlay = document.getElementById('popup-overlay');
