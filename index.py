@@ -95,6 +95,51 @@ def profile():
     return render_template('profile.html', user=user)
 
 
+@bp_index.route('/register', methods=['POST'])
+def register():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
+    password = request.form.get('password')
+    address = request.form.get('address')
+    house_number = request.form.get('house_number')
+    postal_code = request.form.get('postal_code')
+    city = request.form.get('city')
+    country = request.form.get('country')
+    iban = request.form.get('iban')
+    phone_number = request.form.get('phone_number')
+
+    if Users.query.filter_by(email=email).first():
+        flash('Ein Benutzer mit dieser E-Mail existiert bereits.', 'danger')
+        return redirect(url_for('index.index'))
+
+    new_user = Users(
+        email=email,
+        first_name=first_name,
+        last_name=last_name,
+        password=password,
+        address=address,
+        house_number=house_number,
+        postal_code=postal_code,
+        city=city,
+        country=country,
+        iban=iban,
+        phone_number=phone_number
+    )
+
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    user = Users.query.filter_by(email=email).first()
+
+    session['user_email'] = email
+    session['user_id'] = user.user_id
+    flash('Registrierung erfolgreich! Sie können sich jetzt anmelden.', 'success')
+    return redirect(url_for('index.index'))
+
+
 @bp_index.route('/orders')
 def orders():
     if 'user_id' not in session:

@@ -73,6 +73,25 @@
                   return false;
               });
           }
+
+          const registerBtn = document.getElementById('register-btn');
+          const backToLoginBtn = document.getElementById('back-to-login-btn');
+          const loginPopup = document.getElementById('login-popup');
+          const registerPopup = document.getElementById('register-popup');
+
+          if (registerBtn) {
+              registerBtn.addEventListener('click', function() {
+                  loginPopup.style.display = 'none';
+                  registerPopup.style.display = 'block';
+              });
+          }
+
+          if (backToLoginBtn) {
+              backToLoginBtn.addEventListener('click', function() {
+                  registerPopup.style.display = 'none';
+                  loginPopup.style.display = 'block';
+              });
+          }
       });
   </script>
 </head>
@@ -115,13 +134,32 @@
   <div id="popup-overlay" class="popup-overlay"></div>
 
   <div id="login-popup" class="popup">
-      <!-- <button id="close-popup" class="close-popup">&times;</button> -->
       <h2>Login</h2>
       <form action="{{ url_for('index.login') }}" method="POST">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
       </form>
+      <button id="register-btn" class="register-btn">Register</button>
+  </div>
+
+  <div id="register-popup" class="popup" style="display: none;">
+      <h2>Register</h2>
+      <form action="{{ url_for('index.register') }}" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Passwort" required>
+        <input type="text" name="first_name" placeholder="Vorname" required>
+        <input type="text" name="last_name" placeholder="Nachname" required>
+        <input type="text" name="address" placeholder="Straße" required>
+        <input type="text" name="house_number" placeholder="Hausnummer" required>
+        <input type="text" name="postal_code" placeholder="Postleitzahl" required>
+        <input type="text" name="city" placeholder="Stadt" required>
+        <input type="text" name="country" placeholder="Land" required>
+        <input type="text" name="iban" placeholder="IBAN" required>
+        <input type="text" name="phone_number" placeholder="Telefonnummer" required>
+        <button type="submit">Registrieren</button>
+      </form>
+      <button id="back-to-login-btn" class="back-to-login-btn">Back to Login</button>
   </div>
 
     {% block content %}
