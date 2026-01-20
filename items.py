@@ -192,8 +192,14 @@ def initialize_database(app):
 
         user = Users(
             email="admin@example.com",
+            first_name="Admin",
+            last_name="User",
             password="password",
-            address="Parkstrasse 7, 69168 Wiesloch",
+            address="Parkstrasse",
+            house_number="7",
+            postal_code="69168",
+            city="Wiesloch",
+            country="Germany",
             iban="DE89370400440532013000",
             phone_number="01234567890"
         )

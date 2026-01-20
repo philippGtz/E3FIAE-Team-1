@@ -8,7 +8,14 @@
     <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
         <h2>Benutzerinformationen</h2>
         <p><strong>E-Mail:</strong> {{ user.email }}</p>
-        <p><strong>Benutzername:</strong> {{ user.username if user.username else 'Nicht angegeben' }}</p>
+        <p><strong>Vorname:</strong> {{ user.first_name if user.first_name else 'Nicht angegeben' }}</p>
+        <p><strong>Nachname:</strong> {{ user.last_name if user.last_name else 'Nicht angegeben' }}</p>
+        <p><strong>Adresse:</strong> {{ user.address }} {{ user.house_number if user.house_number else '' }}</p>
+        <p><strong>Postleitzahl:</strong> {{ user.postal_code if user.postal_code else 'Nicht angegeben' }}</p>
+        <p><strong>Stadt:</strong> {{ user.city if user.city else 'Nicht angegeben' }}</p>
+        <p><strong>Land:</strong> {{ user.country if user.country else 'Nicht angegeben' }}</p>
+        <p><strong>Telefon:</strong> {{ user.phone_number if user.phone_number else 'Nicht angegeben' }}</p>
+        <p><strong>IBAN:</strong> {{ user.iban }}</p>
     </div>
 
     <a href="{{ url_for('index.catalog') }}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; align-items: center;">Zum Katalog</a>
