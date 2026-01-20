@@ -7,8 +7,8 @@
     background-color: white;
     border-bottom: 1px solid #ddd;
     padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
     z-index: 998;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -29,10 +29,12 @@
 }
 
 .logo-section {
-    flex-grow: 1;
     text-align: center;
     font-weight: bold;
     color: #333;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* User Profile Section in Header */
@@ -40,7 +42,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    min-width: 150px;
+}
+
+.user-profile-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
 }
 
 .user-profile-link {
@@ -70,6 +78,25 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 120px;
+}
+
+.separator {
+    color: #ccc;
+    margin: 0 4px;
+}
+
+.logout-link {
+    font-size: 14px;
+    color: #dc3545;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.logout-link:hover {
+    color: #c82333;
+    background-color: #ffe6e6;
 }
 
 /* Sidebar Menu */

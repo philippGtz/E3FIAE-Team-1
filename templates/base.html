@@ -83,8 +83,12 @@
     <a href="{{ url_for('index.index') }}" class="logo-section" style="text-decoration: none; color: #333; cursor: pointer;">Webshop</a>
     <div class="user-header-section">
       {% if session.get('user_email') %}
+        <div class="user-profile-container">
           <span class="profile-icon">👤</span>
           <span class="user-name">{{ user_first_name }} {{ user_last_name }}</span>
+          <span class="separator">|</span>
+          <a href="{{ url_for('index.logout') }}" class="logout-link">Logout</a>
+        </div>
       {% endif %}
     </div>
   </div>
