@@ -33,6 +33,24 @@ def inject_git_info():
     commit_id, git_tag = get_git_info()
     return dict(commit_id=commit_id, git_tag=git_tag)
 
+@app.context_processor
+def inject_user_info():
+    from flask import session
+    from models import Users
+    
+    user_data = {'first_name': '', 'last_name': ''}
+    
+    if session.get('user_id'):
+        user = Users.query.filter_by(user_id=session.get('user_id')).first()
+        if user:
+            user_data['first_name'] = user.first_name or ''
+            user_data['last_name'] = user.last_name or ''
+    
+    return dict(
+        user_first_name=user_data['first_name'],
+        user_last_name=user_data['last_name']
+    )
+
 if __name__ == '__main__':
   initialize_database(app)
   app.run(debug=app.config["DEBUG"], host=app.config["HOST"], port=app.config["PORT"])

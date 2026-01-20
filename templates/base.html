@@ -78,17 +78,19 @@
 </head>
 
 <body>
-  <!-- Hamburger Header -->
   <div class="hamburger-container">
     <button id="hamburger-menu-btn" class="hamburger-menu-btn">☰</button>
     <a href="{{ url_for('index.index') }}" class="logo-section" style="text-decoration: none; color: #333; cursor: pointer;">Webshop</a>
-    <div style="width: 40px;"></div>
+    <div class="user-header-section">
+      {% if session.get('user_email') %}
+          <span class="profile-icon">👤</span>
+          <span class="user-name">{{ user_first_name }} {{ user_last_name }}</span>
+      {% endif %}
+    </div>
   </div>
 
-  <!-- Sidebar Menu Overlay -->
   <div id="sidebar-menu-overlay" class="sidebar-menu-overlay"></div>
 
-  <!-- Sidebar Menu -->
   <nav id="sidebar-menu" class="sidebar-menu">
     <ul class="sidebar-menu-items">
       <li><a href="{{ url_for('index.catalog') }}">Katalog</a></li>
@@ -99,7 +101,6 @@
     <!-- Auth Section -->
     <div class="menu-auth-section">
       {% if session.get('user_email') %}
-        <div class="user-email">{{ session.get('user_email') }}</div>
         <a href="{{ url_for('index.logout') }}" class="logout-btn">Logout</a>
       {% else %}
         <button id="login-btn-menu" class="login-btn-menu">Login</button>

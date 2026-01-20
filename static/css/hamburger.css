@@ -35,6 +35,43 @@
     color: #333;
 }
 
+/* User Profile Section in Header */
+.user-header-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 150px;
+}
+
+.user-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.user-profile-link:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.profile-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.user-name {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
 /* Sidebar Menu */
 .sidebar-menu {
     position: fixed;
