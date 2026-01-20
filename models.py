@@ -16,8 +16,18 @@ class Users(db.Model):
     __tablename__ = "users"
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    phone_number = db.Column(db.Integer, unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
     username = db.Column(db.String(120), nullable=True)
+    address = db.Column(db.String(120), unique=False, nullable=False)
+    iban = db.Column(db.String(120), unique=True, nullable=False)
+
+class Orders(db.Model):
+    __tablename__ = "orders"
+    order_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    bike_computer_id = db.Column(db.Integer, db.ForeignKey('bike_computers.bc_id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
     
     @property
     def id(self):

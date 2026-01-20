@@ -61,7 +61,7 @@ def login():
 
     if user and user.password == password:
         session['user_email'] = email
-        session['user_id'] = user.id
+        session['user_id'] = user.user_id
         flash('Login erfolgreich!', 'success')
         return redirect(url_for('index.index'))
     else:
