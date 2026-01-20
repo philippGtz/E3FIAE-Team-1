@@ -22,6 +22,7 @@
                 
                 {% if session.get('user_id') %}
                     <div class="order-section">
+                        {% if user and user.iban %}
                         <form method="POST" action="{{ url_for('index.place_order') }}" class="order-form">
                             <input type="hidden" name="bc_id" value="{{ item.bc_id }}">
                             
@@ -32,6 +33,19 @@
                             
                             <button type="submit" class="order-button">Jetzt bestellen</button>
                         </form>
+                        {% else %}
+                        <form class="order-form" style="opacity: 0.6;">
+                            <input type="hidden" name="bc_id" value="{{ item.bc_id }}">
+                            
+                            <div class="quantity-control">
+                                <label for="quantity">Anzahl:</label>
+                                <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" disabled>
+                            </div>
+                            
+                            <button type="button" class="order-button disabled" disabled title="Bitte hinterlegen Sie eine IBAN um zu bestellen">Jetzt bestellen</button>
+                        </form>
+                        <p style="color: #d9534f; font-size: 14px; margin-top: 10px;">⚠ Sie müssen eine IBAN hinterlegen, um Bestellungen zu tätigen.</p>
+                        {% endif %}
                     </div>
                 {% else %}
                     <div class="login-hint">
@@ -95,6 +109,16 @@
 
     .order-button:active {
         transform: scale(0.98);
+    }
+
+    .order-button.disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+
+    .order-button.disabled:hover {
+        background-color: #cccccc;
     }
 
     .login-hint {

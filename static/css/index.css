@@ -105,6 +105,54 @@ body {
             box-sizing: border-box;
         }
 
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-group .required {
+            color: #d9534f;
+            font-weight: bold;
+            margin-right: 2px;
+        }
+
+        .form-group input {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .register-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        @media (min-width: 600px) {
+            .register-form {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .register-form button {
+                grid-column: 1 / -1;
+            }
+        }
+
         .popup button {
             padding: 10px 20px;
             background-color: #007bff;
@@ -117,6 +165,11 @@ body {
         .popup button:hover {
             background-color: #0056b3;
         }
+
+        .register-btn {
+            margin-top: 10px;
+        }
+
         .close-popup {
             position: absolute;
             top: 10px;

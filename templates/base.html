@@ -65,7 +65,7 @@
               });
           }
           
-          // Prevent any interaction with overlay - it just blocks everything
+          
           if (overlay) {
               overlay.addEventListener('click', function(event) {
                   event.preventDefault();
@@ -146,19 +146,52 @@
 
   <div id="register-popup" class="popup" style="display: none;">
       <h2>Register</h2>
-      <form action="{{ url_for('index.register') }}" method="POST">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Passwort" required>
-        <input type="text" name="first_name" placeholder="Vorname" required>
-        <input type="text" name="last_name" placeholder="Nachname" required>
-        <input type="text" name="address" placeholder="Straße" required>
-        <input type="text" name="house_number" placeholder="Hausnummer" required>
-        <input type="text" name="postal_code" placeholder="Postleitzahl" required>
-        <input type="text" name="city" placeholder="Stadt" required>
-        <input type="text" name="country" placeholder="Land" required>
-        <input type="text" name="iban" placeholder="IBAN" required>
-        <input type="text" name="phone_number" placeholder="Telefonnummer" required>
-        <button type="submit">Registrieren</button>
+      <form action="{{ url_for('index.register') }}" method="POST" class="register-form">
+        <div class="form-group">
+          <label><span class="required">*</span> Email</label>
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Passwort</label>
+          <input type="password" name="password" placeholder="Passwort" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Vorname</label>
+          <input type="text" name="first_name" placeholder="Vorname" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Nachname</label>
+          <input type="text" name="last_name" placeholder="Nachname" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Straße</label>
+          <input type="text" name="address" placeholder="Straße" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Hausnummer</label>
+          <input type="text" name="house_number" placeholder="Hausnummer" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Postleitzahl</label>
+          <input type="text" name="postal_code" placeholder="Postleitzahl" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Stadt</label>
+          <input type="text" name="city" placeholder="Stadt" required>
+        </div>
+        <div class="form-group">
+          <label><span class="required">*</span> Land</label>
+          <input type="text" name="country" placeholder="Land" required>
+        </div>
+        <div class="form-group form-group-full">
+          <label>IBAN</label>
+          <input type="text" name="iban" placeholder="IBAN">
+        </div>
+        <div class="form-group form-group-full">
+          <label>Telefonnummer</label>
+          <input type="text" name="phone_number" placeholder="Telefonnummer">
+        </div>
+        <button type="submit" class="register-btn">Registrieren</button>
       </form>
       <button id="back-to-login-btn" class="back-to-login-btn">Back to Login</button>
   </div>

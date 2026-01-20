@@ -16,7 +16,7 @@ class Users(db.Model):
     __tablename__ = "users"
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    phone_number = db.Column(db.String(20), unique=True, nullable=False)
+    phone_number = db.Column(db.String(20), unique=True, nullable=True)
     password = db.Column(db.String(128), nullable=False)
     first_name = db.Column(db.String(120), nullable=True)
     last_name = db.Column(db.String(120), nullable=True)
@@ -25,7 +25,7 @@ class Users(db.Model):
     postal_code = db.Column(db.String(10), nullable=True)
     city = db.Column(db.String(120), nullable=True)
     country = db.Column(db.String(120), nullable=True)
-    iban = db.Column(db.String(120), unique=True, nullable=False)
+    iban = db.Column(db.String(120), unique=True, nullable=True)
 
 class Orders(db.Model):
     __tablename__ = "orders"

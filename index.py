@@ -47,7 +47,10 @@ def detail(item_id):
     item = BikeComputers.query.filter_by(bc_id=item_id).first()
     if not item:
         abort(404)
-    return render_template('detail.html', item=item)
+    user = None
+    if session.get('user_id'):
+        user = Users.query.filter_by(user_id=session.get('user_id')).first()
+    return render_template('detail.html', item=item, user=user)
 
 @bp_index.route('/login', methods=['POST'])
 def login():
@@ -147,6 +150,13 @@ def place_order():
         return redirect(url_for('index.index'))
     
     user_id = session.get('user_id')
+    
+    # Überprüfe, ob der Benutzer eine IBAN hat
+    user = Users.query.filter_by(user_id=user_id).first()
+    if not user or not user.iban:
+        flash('Bitte hinterlegen Sie eine IBAN in Ihrem Profil, um Bestellungen zu tätigen.', 'danger')
+        return redirect(url_for('index.profile'))
+    
     bc_id = request.form.get('bc_id')
     quantity = request.form.get('quantity')
     
