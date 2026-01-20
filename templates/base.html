@@ -103,7 +103,9 @@
     <div class="user-header-section">
       {% if session.get('user_email') %}
         <div class="user-profile-container">
-          <span class="profile-icon">👤</span>
+          <a href="{{ url_for('index.catalog') }}">Katalog</a>
+          <a href="{{ url_for('index.orders') }}">Bestellungen</a>
+          <a href="{{ url_for('index.profile') }}">Profil</a>
           <span class="user-name">{{ user_first_name }} {{ user_last_name }}</span>
           <span class="separator">|</span>
           <a href="{{ url_for('index.logout') }}" class="logout-link">Logout</a>
@@ -112,25 +114,24 @@
     </div>
   </div>
 
-  <div id="sidebar-menu-overlay" class="sidebar-menu-overlay"></div>
+  <div id="sidebar-menu-overlay" class="sidebar-menu-overlay">
 
-  <nav id="sidebar-menu" class="sidebar-menu">
-    <ul class="sidebar-menu-items">
-      <li><a href="{{ url_for('index.catalog') }}">Katalog</a></li>
-      <li><a href="{{ url_for('index.orders') }}">Bestellungen</a></li>
-      <li><a href="{{ url_for('index.profile') }}" class="profile-link">Profil</a></li>
-    </ul>
+    <nav id="sidebar-menu" class="sidebar-menu">
+      <ul class="sidebar-menu-items">
+        <li><a href="{{ url_for('index.catalog') }}">Katalog</a></li>
+        <li><a href="{{ url_for('index.orders') }}">Bestellungen</a></li>
+        <li><a href="{{ url_for('index.profile') }}" class="profile-link">Profil</a></li>
+      </ul>
 
-    <!-- Auth Section -->
-    <div class="menu-auth-section">
-      {% if session.get('user_email') %}
-        <a href="{{ url_for('index.logout') }}" class="logout-btn">Logout</a>
-      {% else %}
-        <button id="login-btn-menu" class="login-btn-menu">Login</button>
-      {% endif %}
-    </div>
-  </nav>
-
+      <div class="menu-auth-section">
+        {% if session.get('user_email') %}
+          <a href="{{ url_for('index.logout') }}" class="logout-btn">Logout</a>
+        {% else %}
+          <button id="login-btn-menu" class="login-btn-menu">Login</button>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
   <div id="popup-overlay" class="popup-overlay"></div>
 
   <div id="login-popup" class="popup">
