@@ -140,6 +140,48 @@ def register():
     return redirect(url_for('index.index'))
 
 
+@bp_index.route('/place-order', methods=['POST'])
+def place_order():
+    if 'user_id' not in session:
+        flash('Bitte melden Sie sich zunächst an.', 'warning')
+        return redirect(url_for('index.index'))
+    
+    user_id = session.get('user_id')
+    bc_id = request.form.get('bc_id')
+    quantity = request.form.get('quantity')
+    
+    try:
+        bc_id = int(bc_id)
+        quantity = int(quantity)
+        
+        if quantity <= 0:
+            flash('Die Menge muss größer als 0 sein.', 'danger')
+            return redirect(url_for('index.detail', item_id=bc_id))
+        
+        # Überprüfe, ob das Produkt existiert
+        bike_computer = BikeComputers.query.filter_by(bc_id=bc_id).first()
+        if not bike_computer:
+            flash('Produkt nicht gefunden.', 'danger')
+            return redirect(url_for('index.catalog'))
+        
+        # Erstelle neue Bestellung
+        new_order = Orders(
+            user_id=user_id,
+            bc_id=bc_id,
+            quantity=quantity
+        )
+        
+        db.session.add(new_order)
+        db.session.commit()
+        
+        flash(f'Bestellung erfolgreich! {quantity} x {bike_computer.bc_material} wurde bestellt.', 'success')
+        return redirect(url_for('index.orders'))
+    
+    except (ValueError, TypeError):
+        flash('Ungültige Eingabe.', 'danger')
+        return redirect(url_for('index.catalog'))
+
+
 @bp_index.route('/orders')
 def orders():
     if 'user_id' not in session:
@@ -147,6 +189,15 @@ def orders():
         return redirect(url_for('index.index'))
     
     user_id = session.get('user_id')
-    orders = Orders.query.filter_by(user_id=user_id).all()
+    user_orders = Orders.query.filter_by(user_id=user_id).all()
     
-    return render_template('orders.html', orders=orders)
+    # Lade die Produktdetails für jede Bestellung
+    orders_with_details = []
+    for order in user_orders:
+        bike_computer = BikeComputers.query.filter_by(bc_id=order.bc_id).first()
+        orders_with_details.append({
+            'order': order,
+            'bike_computer': bike_computer
+        })
+    
+    return render_template('orders.html', orders=orders_with_details)
