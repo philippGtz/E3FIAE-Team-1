@@ -57,7 +57,7 @@ def initialize_database(app):
                     bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (ROT)",
                     bc_material_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
-                    bc_image="fc-2.jpg"
+                    bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
                     bc_material="GOSM1000",
@@ -85,7 +85,7 @@ def initialize_database(app):
                     bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (ROT)",
                     bc_material_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
-                    bc_image="fc-2.jpg"
+                    bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
                     bc_material="GOSL2000",
@@ -113,7 +113,7 @@ def initialize_database(app):
                     bc_material_desc_short="GPS-RADCOMPUTER ROAD 16GB (ROT)",
                     bc_material_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
-                    bc_image="fc-2.jpg"
+                    bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
                     bc_material="GRSK1000",
@@ -141,7 +141,7 @@ def initialize_database(app):
                     bc_material_desc_short="GPS-RADCOMPUTER ROAD 32GB (ROT)",
                     bc_material_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
-                    bc_image="fc-2.jpg"
+                    bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
                     bc_material="GRSM1000",
@@ -169,7 +169,7 @@ def initialize_database(app):
                     bc_material_desc_short="GPS-RADCOMPUTER ROAD 64GB (ROT)",
                     bc_material_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
-                    bc_image="fc-2.jpg"
+                    bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
                     bc_material="GRSL2000",
