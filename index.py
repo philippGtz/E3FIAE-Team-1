@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort, request, redirect, url_for, flash, session
+from flask import Blueprint, render_template, abort, request, redirect, url_for, flash, session, jsonify
 from models import Users, db, BikeComputers, Orders
 
 bp_index = Blueprint('index', __name__)
@@ -68,10 +68,9 @@ def login():
         session['user_first_name'] = user.first_name
         session['user_last_name'] = user.last_name
         flash('Login erfolgreich!', 'success')
-        return redirect(url_for('index.index'))
+        return jsonify({'success': True, 'message': 'Login erfolgreich!'})
     else:
-        flash('Ungültige E-Mail oder Passwort.', 'danger')
-        return "Error: Falsche Daten"
+        return jsonify({'success': False, 'message': 'Falsches Passwort. Versuchen Sie es noch einmal.'})
 
 
 @bp_index.route('/logout')

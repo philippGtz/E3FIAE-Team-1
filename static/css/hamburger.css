@@ -8,7 +8,7 @@
     border-bottom: 2px solid #e6e6e6;
     padding: 12px 20px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     z-index: 998;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -22,6 +22,7 @@
     padding: 5px 10px;
     color: #333;
     transition: color 0.3s ease;
+    display: none;
 }
 
 .hamburger-menu-btn:hover {
@@ -32,9 +33,6 @@
     text-align: center;
     font-weight: bold;
     color: #333;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 /* User Profile Section in Header */
@@ -91,6 +89,50 @@
 .logout-link:hover {
     color: #c82333;
     background-color: #ffe6e6;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+    display: none;
+}
+
+.hamburger-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-items li {
+    list-style: none;
+}
+
+.nav-items a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-items a:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+}
+
+.nav-items a.active {
+    background-color: #e0e0e0;
+    color: #333;
+    font-weight: 500;
 }
 
 /* Sidebar Menu */
@@ -227,16 +269,51 @@ body {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+    .hamburger-container {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .hamburger-menu-btn {
+        display: block !important;
+    }
+
+    .hamburger-left {
+        display: flex !important;
+        justify-content: flex-start;
+    }
+
+    .logo-section {
+        flex: 1;
+        text-align: center;
+    }
+
+    .desktop-nav {
+        display: none !important;
+    }
+
+    .user-header-section {
+        display: flex !important;
+        justify-content: flex-end;
+    }
+
     .sidebar-menu {
         width: 250px;
         left: -250px;
     }
+}
 
-    #hamburger-menu-btn {
-        display: block;
+/* Desktop responsiveness - show navigation, hide hamburger */
+@media (min-width: 769px) {
+    .hamburger-menu-btn {
+        display: none !important;
     }
 
-    .user-header-section {
-        display: none;
+    .desktop-nav {
+        display: block !important;
+    }
+
+    .sidebar-menu,
+    .sidebar-menu-overlay {
+        display: none !important;
     }
 }
