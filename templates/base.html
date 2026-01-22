@@ -1,118 +1,133 @@
 <!DOCTYPE html>
-<html lang="de">  
+<html lang="de">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/hamburger.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const hamburgerBtn = document.getElementById('hamburger-menu-btn');
-          const sidebarMenu = document.getElementById('sidebar-menu');
-          const sidebarOverlay = document.getElementById('sidebar-menu-overlay');
-          
-          if (hamburgerBtn) {
-              hamburgerBtn.addEventListener('click', function() {
-                  sidebarMenu.classList.toggle('open');
-                  sidebarOverlay.classList.toggle('open');
-              });
-          }
-          
-          if (sidebarOverlay) {
-              sidebarOverlay.addEventListener('click', function() {
-                  sidebarMenu.classList.remove('open');
-                  sidebarOverlay.classList.remove('open');
-              });
-          }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/hamburger.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const hamburgerBtn = document.getElementById('hamburger-menu-btn');
+      const sidebarMenu = document.getElementById('sidebar-menu');
+      const sidebarOverlay = document.getElementById('sidebar-menu-overlay');
 
-          const loginBtn = document.getElementById('login-btn-menu');
-          const popup = document.getElementById('login-popup');
-          const overlay = document.getElementById('popup-overlay');
-          const closeBtn = document.getElementById('close-popup');
-  
-          const isLoggedIn = "{{ 'true' if session.get('user_email') else 'false' }}";
-  
-          function closePopup() {
-              if (popup) popup.style.display = 'none';
-              if (overlay) overlay.style.display = 'none';
-              document.body.style.overflow = 'auto';
-          }
-  
-          function openPopup() {
-              if (popup) popup.style.display = 'block';
-              if (overlay) overlay.style.display = 'block';
-              document.body.style.overflow = 'hidden';
-          }
-  
-          if (isLoggedIn === "true") {
-              closePopup();
-          } else {
-              openPopup();
-          }
-  
-          if (loginBtn) {
-              loginBtn.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  openPopup();
-              });
-          }
-  
-          if (closeBtn) {
-              closeBtn.addEventListener('click', function() {
-                  closePopup();
-              });
-          }
-          
-          
-          if (overlay) {
-              overlay.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  return false;
-              });
-          }
+      if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function () {
+          sidebarMenu.classList.toggle('open');
+          sidebarOverlay.classList.toggle('open');
+        });
+      }
 
-          const registerBtn = document.getElementById('register-btn');
-          const backToLoginBtn = document.getElementById('back-to-login-btn');
-          const loginPopup = document.getElementById('login-popup');
-          const registerPopup = document.getElementById('register-popup');
+      if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', function () {
+          sidebarMenu.classList.remove('open');
+          sidebarOverlay.classList.remove('open');
+        });
+      }
 
-          if (registerBtn) {
-              registerBtn.addEventListener('click', function() {
-                  loginPopup.style.display = 'none';
-                  registerPopup.style.display = 'block';
-              });
-          }
+      const loginBtn = document.getElementById('login-btn-menu');
+      const popup = document.getElementById('login-popup');
+      const overlay = document.getElementById('popup-overlay');
+      const closeBtn = document.getElementById('close-popup');
 
-          if (backToLoginBtn) {
-              backToLoginBtn.addEventListener('click', function() {
-                  registerPopup.style.display = 'none';
-                  loginPopup.style.display = 'block';
-              });
-          }
-      });
+      const isLoggedIn = "{{ 'true' if session.get('user_email') else 'false' }}";
+
+      function closePopup() {
+        if (popup) popup.style.display = 'none';
+        if (overlay) overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      function openPopup() {
+        if (popup) popup.style.display = 'block';
+        if (overlay) overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      if (isLoggedIn === "true") {
+        closePopup();
+      } else {
+        openPopup();
+      }
+
+      if (loginBtn) {
+        loginBtn.addEventListener('click', function (event) {
+          event.preventDefault();
+          openPopup();
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+          closePopup();
+        });
+      }
+
+
+      if (overlay) {
+        overlay.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          return false;
+        });
+      }
+
+      const registerBtn = document.getElementById('register-btn');
+      const backToLoginBtn = document.getElementById('back-to-login-btn');
+      const loginPopup = document.getElementById('login-popup');
+      const registerPopup = document.getElementById('register-popup');
+
+      if (registerBtn) {
+        registerBtn.addEventListener('click', function () {
+          loginPopup.style.display = 'none';
+          registerPopup.style.display = 'block';
+        });
+      }
+
+      if (backToLoginBtn) {
+        backToLoginBtn.addEventListener('click', function () {
+          registerPopup.style.display = 'none';
+          loginPopup.style.display = 'block';
+        });
+      }
+    });
   </script>
 </head>
 
 <body>
   <div class="hamburger-container">
     <button id="hamburger-menu-btn" class="hamburger-menu-btn">☰</button>
-    <a href="{{ url_for('index.index') }}" class="logo-section" style="text-decoration: none; color: #333; cursor: pointer;">Webshop</a>
+    <a href="{{ url_for('index.index') }}" class="logo-section"
+      style="text-decoration: none; color: #333; cursor: pointer;">Webshop</a>
     <div class="user-header-section">
       {% if session.get('user_email') %}
-        <div class="user-profile-container">
-          <a href="{{ url_for('index.catalog') }}">Katalog</a>
-          <a href="{{ url_for('index.orders') }}">Bestellungen</a>
-          <a href="{{ url_for('index.profile') }}">Profil</a>
+      <div class="user-profile-container">
           <span class="user-name">{{ user_first_name }} {{ user_last_name }}</span>
           <span class="separator">|</span>
           <a href="{{ url_for('index.logout') }}" class="logout-link">Logout</a>
-        </div>
+      </div>
       {% endif %}
     </div>
   </div>
+  <nav id="sidebar-menu" class="sidebar-menu">
+    <ul class="sidebar-menu-items">
+      <li><a href="{{ url_for('index.catalog') }}">Katalog</a></li>
+      <li><a href="{{ url_for('index.orders') }}">Bestellungen</a></li>
+      <li><a href="{{ url_for('index.profile') }}" class="profile-link">Profil</a></li>
+    </ul>
+
+    <!-- Auth Section -->
+    <div class="menu-auth-section">
+      {% if session.get('user_email') %}
+      <a href="{{ url_for('index.logout') }}" class="logout-btn">Logout</a>
+      {% else %}
+      <button id="login-btn-menu" class="login-btn-menu">Login</button>
+      {% endif %}
+    </div>
+  </nav>
 
   <div id="sidebar-menu-overlay" class="sidebar-menu-overlay">
 
@@ -123,89 +138,89 @@
         <li><a href="{{ url_for('index.profile') }}" class="profile-link">Profil</a></li>
       </ul>
 
-      <div class="menu-auth-section">
+      <!-- <div class="menu-auth-section">
         {% if session.get('user_email') %}
           <a href="{{ url_for('index.logout') }}" class="logout-btn">Logout</a>
         {% else %}
           <button id="login-btn-menu" class="login-btn-menu">Login</button>
         {% endif %}
-      </div>
+      </div> -->
     </nav>
   </div>
   <div id="popup-overlay" class="popup-overlay"></div>
 
   <div id="login-popup" class="popup">
-      <h2>Login</h2>
-      <form action="{{ url_for('index.login') }}" method="POST">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
-      <button id="register-btn" class="register-btn">Register</button>
+    <h2>Login</h2>
+    <form action="{{ url_for('index.login') }}" method="POST">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <button id="register-btn" class="register-btn">Register</button>
   </div>
 
   <div id="register-popup" class="popup" style="display: none;">
-      <h2>Register</h2>
-      <form action="{{ url_for('index.register') }}" method="POST" class="register-form">
-        <div class="form-group">
-          <label><span class="required">*</span> Email</label>
-          <input type="email" name="email" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Passwort</label>
-          <input type="password" name="password" placeholder="Passwort" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Vorname</label>
-          <input type="text" name="first_name" placeholder="Vorname" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Nachname</label>
-          <input type="text" name="last_name" placeholder="Nachname" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Straße</label>
-          <input type="text" name="address" placeholder="Straße" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Hausnummer</label>
-          <input type="text" name="house_number" placeholder="Hausnummer" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Postleitzahl</label>
-          <input type="text" name="postal_code" placeholder="Postleitzahl" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Stadt</label>
-          <input type="text" name="city" placeholder="Stadt" required>
-        </div>
-        <div class="form-group">
-          <label><span class="required">*</span> Land</label>
-          <input type="text" name="country" placeholder="Land" required>
-        </div>
-        <div class="form-group form-group-full">
-          <label>IBAN</label>
-          <input type="text" name="iban" placeholder="IBAN">
-        </div>
-        <div class="form-group form-group-full">
-          <label>Telefonnummer</label>
-          <input type="text" name="phone_number" placeholder="Telefonnummer">
-        </div>
-        <button type="submit" class="register-btn">Registrieren</button>
-      </form>
-      <button id="back-to-login-btn" class="back-to-login-btn">Back to Login</button>
+    <h2>Register</h2>
+    <form action="{{ url_for('index.register') }}" method="POST" class="register-form">
+      <div class="form-group">
+        <label><span class="required">*</span> Email</label>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Passwort</label>
+        <input type="password" name="password" placeholder="Passwort" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Vorname</label>
+        <input type="text" name="first_name" placeholder="Vorname" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Nachname</label>
+        <input type="text" name="last_name" placeholder="Nachname" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Straße</label>
+        <input type="text" name="address" placeholder="Straße" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Hausnummer</label>
+        <input type="text" name="house_number" placeholder="Hausnummer" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Postleitzahl</label>
+        <input type="text" name="postal_code" placeholder="Postleitzahl" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Stadt</label>
+        <input type="text" name="city" placeholder="Stadt" required>
+      </div>
+      <div class="form-group">
+        <label><span class="required">*</span> Land</label>
+        <input type="text" name="country" placeholder="Land" required>
+      </div>
+      <div class="form-group form-group-full">
+        <label>IBAN</label>
+        <input type="text" name="iban" placeholder="IBAN">
+      </div>
+      <div class="form-group form-group-full">
+        <label>Telefonnummer</label>
+        <input type="text" name="phone_number" placeholder="Telefonnummer">
+      </div>
+      <button type="submit" class="register-btn">Registrieren</button>
+    </form>
+    <button id="back-to-login-btn" class="back-to-login-btn">Back to Login</button>
   </div>
 
-    {% block content %}
-    {% endblock %}
+  {% block content %}
+  {% endblock %}
 
   <!-- Git Info Footer -->
   <div class="git-info">
     {% if commit_id %}
-        <div><strong>Commit:</strong> {{ commit_id[:8] }}</div>
-        <div><strong>Tag:</strong> {{ git_tag if git_tag else 'N/A' }}</div>
+    <div><strong>Commit:</strong> {{ commit_id[:8] }}</div>
+    <div><strong>Tag:</strong> {{ git_tag if git_tag else 'N/A' }}</div>
     {% else %}
-        <div><em>Git info unavailable</em></div>
+    <div><em>Git info unavailable</em></div>
     {% endif %}
   </div>
 
