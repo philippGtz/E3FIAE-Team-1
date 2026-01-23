@@ -97,6 +97,34 @@ def profile():
     return render_template('profile.html', user=user)
 
 
+@bp_index.route('/update-iban', methods=['POST'])
+def update_iban():
+    if 'user_id' not in session:
+        flash('Bitte melden Sie sich zunächst an.', 'warning')
+        return redirect(url_for('index.index'))
+    
+    user_id = session.get('user_id')
+    iban = request.form.get('iban')
+    
+    # Convert empty strings to None
+    iban = iban if iban.strip() else None
+    
+    user = Users.query.filter_by(user_id=user_id).first()
+    if not user:
+        flash('Benutzer nicht gefunden.', 'danger')
+        return redirect(url_for('index.index'))
+    
+    try:
+        user.iban = iban
+        db.session.commit()
+        flash('IBAN erfolgreich gespeichert!', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Fehler beim Speichern der IBAN: {str(e)}', 'danger')
+    
+    return redirect(url_for('index.profile'))
+
+
 @bp_index.route('/register', methods=['POST'])
 def register():
     email = request.form.get('email')
@@ -115,6 +143,10 @@ def register():
     if Users.query.filter_by(email=email).first():
         flash('Ein Benutzer mit dieser E-Mail existiert bereits.', 'danger')
         return redirect(url_for('index.index'))
+
+    # Convert empty strings to None for unique fields
+    iban = iban if iban.strip() else None
+    phone_number = phone_number if phone_number.strip() else None
 
     new_user = Users(
         email=email,

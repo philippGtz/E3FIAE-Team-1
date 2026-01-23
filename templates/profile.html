@@ -15,7 +15,23 @@
         <p><strong>Stadt:</strong> {{ user.city if user.city else 'Nicht angegeben' }}</p>
         <p><strong>Land:</strong> {{ user.country if user.country else 'Nicht angegeben' }}</p>
         <p><strong>Telefon:</strong> {{ user.phone_number if user.phone_number else 'Nicht angegeben' }}</p>
-        <p><strong>IBAN:</strong> {{ user.iban }}</p>
+    </div>
+
+    <div style="background-color: #fff3cd; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h2>IBAN-Informationen</h2>
+        {% if user.iban %}
+            <p><strong>IBAN:</strong> {{ user.iban }}</p>
+        {% else %}
+            <p style="color: #856404;"><strong>IBAN:</strong> Nicht angegeben</p>
+        {% endif %}
+        
+        <form action="{{ url_for('index.update_iban') }}" method="POST" style="margin-top: 15px;">
+            <div style="margin-bottom: 10px;">
+                <label for="iban" style="display: block; margin-bottom: 5px; font-weight: bold;">IBAN eingeben oder aktualisieren:</label>
+                <input type="text" id="iban" name="iban" placeholder="DE89370400440532013000" value="{{ user.iban if user.iban else '' }}" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+            </div>
+            <button type="submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">IBAN speichern</button>
+        </form>
     </div>
 
     <div style="text-align: center;">
