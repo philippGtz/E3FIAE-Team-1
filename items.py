@@ -64,14 +64,14 @@ def initialize_database(app):
                     bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (SCHWARZ)",
                     bc_material_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
-                    bc_image="fc-2.jpg"
+                    bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
                     bc_material="GOWM1000",
                     bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (WEISS)",
                     bc_material_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
-                    bc_image="fc-2.jpg"
+                    bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
                     bc_material="GOBL2000",

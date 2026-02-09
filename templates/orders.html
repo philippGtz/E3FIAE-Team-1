@@ -18,7 +18,7 @@
                             {% if item.bike_computer and item.bike_computer.bc_image %}
                                 <img src="{{ url_for('static', filename='images/' + item.bike_computer.bc_image) }}" alt="{{ item.bike_computer.bc_material }}">
                             {% else %}
-                                <div class="no-image">Kein Bild</div>
+                                <div class="no-image">Kein Bild!</div>
                             {% endif %}
                         </div>
 
