@@ -1,5 +1,5 @@
 from flask import Flask
-from models import BikeComputers, Users, db
+from models import BikeComputers, Users, Orders, db
 from config import Config
 
 
@@ -192,11 +192,27 @@ def initialize_database(app):
 
         user = Users(
             email="admin@example.com",
+            first_name="Admin",
+            last_name="User",
             password="password",
-            address="Parkstrasse 7, 69168 Wiesloch",
+            address="Parkstrasse",
+            house_number="7",
+            postal_code="69168",
+            city="Wiesloch",
+            country="Germany",
             iban="DE89370400440532013000",
             phone_number="01234567890"
         )
 
+        bestellung = Orders(
+            user_id=1,
+            order_id=1,
+            bc_id=1,
+            quantity=2
+        )
+
         db.session.add(user)
         db.session.commit()
+
+        db.session.add(bestellung)  # Add the order to the session
+        db.session.commit()  # Commit the order to the database
