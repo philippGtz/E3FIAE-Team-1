@@ -33,9 +33,9 @@ class Orders(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     bc_id = db.Column(db.Integer, db.ForeignKey('bike_computers.bc_id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    sap_terminnummer = db.Column(db.Integer, nullable=False)
-    order_status = db.Column(db.String(120), nullable=False)
-    delivery_date = db.Column(db.Date, nullable=False)
+    sap_terminnummer = db.Column(db.Integer, nullable=True)
+    order_status = db.Column(db.String(120), nullable=True)
+    delivery_date = db.Column(db.Date, nullable=True)
     
     @property
     def id(self):
