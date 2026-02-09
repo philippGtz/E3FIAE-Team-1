@@ -129,6 +129,25 @@
           });
         });
       }
+
+      const aboutBtn = document.getElementById('about-btn');
+      const aboutPopup = document.getElementById('about-popup');
+      const closeAboutPopup = document.getElementById('close-about-popup');
+
+      if (aboutBtn) {
+        aboutBtn.addEventListener('click', function (event) {
+          event.preventDefault();
+          aboutPopup.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      if (closeAboutPopup) {
+        closeAboutPopup.addEventListener('click', function () {
+          aboutPopup.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        });
+      }
     });
   </script>
 </head>
@@ -164,6 +183,7 @@
       <li><a href="{{ url_for('index.catalog') }}" {% if request.endpoint == 'index.catalog' %}class="active"{% endif %}>Katalog</a></li>
       <li><a href="{{ url_for('index.orders') }}" {% if request.endpoint == 'index.orders' %}class="active"{% endif %}>Bestellungen</a></li>
       <li><a href="{{ url_for('index.profile') }}" {% if request.endpoint == 'index.profile' %}class="active"{% endif %}>Profil</a></li>
+      <li><a href="#" id="about-btn">About</a></li>
     </ul>
 
   
@@ -251,6 +271,17 @@
       <button type="submit" class="register-btn">Registrieren</button>
     </form>
     <button id="back-to-login-btn" class="back-to-login-btn">Back to Login</button>
+  </div>
+
+  <div id="about-popup" class="popup" style="display: none;">
+    <h2>About</h2>
+    <p>Entwickler:
+<ul>
+<li>Philipp Getz, E3FI1</li>
+<li>Emre Cevik, E3FI1</li>
+<li>Joris Unkel, E3FI1</li>  
+    </p>
+    <button id="close-about-popup">Close</button>
   </div>
 
   {% block content %}
