@@ -53,6 +53,29 @@
             </div>
         {% endif %}
     </div>
+
+    <!-- CSV Export Button -->
+    <button id="csv-export-btn" class="csv-export-btn">CSV-Export</button>
+
+    <!-- Popup Modal -->
+    <div id="csv-export-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>CSV-Export Filter</h2>
+            <form id="csv-export-form" method="POST" action="{{ url_for('export_csv') }}">
+                <label>
+                    <input type="radio" name="filter" value="offen" required> Ohne SAP-Terminnummer (Status: "offen")
+                </label>
+                <label>
+                    <input type="radio" name="filter" value="erfasst"> Mit SAP-Terminnummer (Status: "erfasst")
+                </label>
+                <label>
+                    <input type="radio" name="filter" value="erledigt"> Mit Lieferdatum (Status: "erledigt")
+                </label>
+                <button type="submit" class="download-btn">Download</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -214,6 +237,78 @@
         background-color: #005a00;
     }
 
+    .csv-export-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007B00;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .csv-export-btn:hover {
+        background-color: #005a00;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 400px;
+        text-align: left;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .download-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007B00;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .download-btn:hover {
+        background-color: #005a00;
+    }
+
+    /* Ensure radio buttons are displayed vertically and left-aligned */
+    #csv-export-form label {
+        display: block;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    #csv-export-form h2 {
+        text-align: center;
+    }
+
     @media (max-width: 1024px) {
         .orders-grid {
             grid-template-columns: repeat(3, 1fr);
@@ -249,5 +344,21 @@
         }
     }
 </style>
+
+<script>
+    document.getElementById('csv-export-btn').addEventListener('click', function() {
+        document.getElementById('csv-export-modal').style.display = 'flex';
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', function() {
+        document.getElementById('csv-export-modal').style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === document.getElementById('csv-export-modal')) {
+            document.getElementById('csv-export-modal').style.display = 'none';
+        }
+    });
+</script>
 
 {% endblock %}
