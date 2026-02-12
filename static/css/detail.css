@@ -1,4 +1,4 @@
-/* styles moved from templates/detail.html */
+
 :root{--bg:#f7f8fa;--card:#fff;--muted:#6b7280;--accent:#0366d6}
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);margin:0;padding:24px;color:#111}
 .container{max-width:980px;margin:0 auto}

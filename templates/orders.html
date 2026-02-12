@@ -48,30 +48,41 @@
                     {% endif %}
                 </div>
 
-                <div class="order-header">
-                    <span class="order-id">Bestellung #{{ item.order.order_id }}</span>
-                </div>
-
-                <div class="order-details">
-                    <div class="detail-row">
-                        <span class="label">Artikel:</span>
-                        <span class="value">
-                            {% if item.bike_computer %}
-                            {{ item.bike_computer.bc_material }}
-                            {% else %}
-                            Artikel #{{ item.order.bc_id }}
-                            {% endif %}
-                        </span>
+                        <div class="order-header">
+                            <span class="order-id">Bestellung #{{ item.order.order_id }}</span>
+                        </div>
+                        
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span class="label">Artikel:</span>
+                                <span class="value">
+                                    {% if item.bike_computer %}
+                                        {{ item.bike_computer.bc_material }}
+                                    {% else %}
+                                        Artikel #{{ item.order.bc_id }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                            
+                            <div class="detail-row">
+                                <span class="label">Beschreibung:</span>
+                                <span class="value">
+                                    {% if item.bike_computer and item.bike_computer.bc_material_desc_short %}
+                                        {{ item.bike_computer.bc_material_desc_short }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </span>
+                            </div>
+                            
+                            <div class="detail-row">
+                                <span class="label">Menge:</span>
+                                <span class="value">{{ item.order.quantity }} x</span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="detail-row">
-                        <span class="label">Menge:</span>
-                        <span class="value">{{ item.order.quantity }} x</span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% else %}
         <div class="no-orders">
             <p>Noch keine Bestellungen vorhanden.</p>

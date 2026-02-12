@@ -242,3 +242,8 @@ def orders():
         })
     
     return render_template('orders.html', orders=orders_with_details)
+
+
+@bp_index.route('/anlage')
+def anlage():
+    return render_template('anlage.html')

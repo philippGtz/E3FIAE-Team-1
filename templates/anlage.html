@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/anlage.css') }}">
+
+<div class="anlage-container">
+    <div class="anlage-image-wrapper">
+        <img src="{{ url_for('static', filename='images/Werk.jpg') }}" alt="Werk" class="anlage-image" id="werk-image">
+        
+      
+        <svg class="hotspot-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+          
+            <circle cx="18.7" cy="65" r="1.0" class="hotspot-circle" id="hotspot1" data-title="Bereich 1" data-description="Beschreibung Bereich 1"/>
+            
+            
+            <circle cx="45.3" cy="52" r="1.0" class="hotspot-circle" id="hotspot2" data-title="Bereich 2" data-description="Beschreibung Bereich 2"/>
+            
+
+            <circle cx="61.3" cy="44" r="1.0" class="hotspot-circle" id="hotspot3" data-title="Bereich 3" data-description="Beschreibung Bereich 3"/>
+            
+
+            <circle cx="71.5" cy="39" r="1.0" class="hotspot-circle" id="hotspot4" data-title="Bereich 4" data-description="Beschreibung Bereich 4"/>
+            
+
+            <circle cx="86.7" cy="40" r="1.0" class="hotspot-circle" id="hotspot5" data-title="Bereich 5" data-description="Beschreibung Bereich 5"/>
+            
+
+            <circle cx="85" cy="13.5" r="1.0" class="hotspot-circle" id="hotspot6" data-title="Bereich 6" data-description="Beschreibung Bereich 6"/>
+        </svg>
+        
+        <div class="hotspot-tooltip-container"></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const svg = document.querySelector('.hotspot-svg');
+        const circles = document.querySelectorAll('.hotspot-circle');
+        let currentTooltip = null;
+        let activeCircle = null;
+        
+
+        circles.forEach(circle => {
+            circle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    activeCircle = null;
+                    if (currentTooltip) {
+                        currentTooltip.remove();
+                        currentTooltip = null;
+                    }
+                    return;
+                }
+                
+                circles.forEach(c => {
+                    c.classList.remove('active');
+                    if (c.tooltip) {
+                        c.tooltip.remove();
+                        c.tooltip = null;
+                    }
+                });
+                
+                this.classList.add('active');
+                activeCircle = this;
+                if (currentTooltip) {
+                    currentTooltip.remove();
+                }
+                showTooltip(this);
+            });
+            
+            circle.addEventListener('mouseenter', function(e) {
+                if (!this.classList.contains('active')) {
+                    showTooltip(this);
+                }
+            });
+            
+            circle.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active') && currentTooltip) {
+                    currentTooltip.remove();
+                    currentTooltip = null;
+                }
+            });
+        });
+        
+        function showTooltip(circle) {
+            const title = circle.getAttribute('data-title');
+            const description = circle.getAttribute('data-description');
+            
+            const svgRect = svg.getBoundingClientRect();
+            const cx = parseFloat(circle.getAttribute('cx'));
+            const cy = parseFloat(circle.getAttribute('cy'));
+            
+            const pixelX = (cx / 100) * svgRect.width + svgRect.left;
+            const pixelY = (cy / 100) * svgRect.height + svgRect.top;
+            
+            const tooltip = document.createElement('div');
+            tooltip.className = 'hotspot-tooltip';
+            tooltip.innerHTML = `
+                <h3>${title}</h3>
+                <p>${description}</p>
+            `;
+            tooltip.style.left = pixelX + 'px';
+            tooltip.style.top = pixelY + 'px';
+            
+            document.body.appendChild(tooltip);
+            void tooltip.offsetWidth;
+            tooltip.classList.add('show');
+            
+            if (circle.classList.contains('active')) {
+                circle.tooltip = tooltip;
+            }
+            currentTooltip = tooltip;
+        }
+        
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.hotspot-svg') && !e.target.closest('.hotspot-tooltip')) {
+                circles.forEach(c => {
+                    c.classList.remove('active');
+                    if (c.tooltip) {
+                        c.tooltip.remove();
+                        c.tooltip = null;
+                    }
+                });
+                if (currentTooltip) {
+                    currentTooltip.remove();
+                    currentTooltip = null;
+                }
+                activeCircle = null;
+            }
+        });
+    });
+</script>
+
+{% endblock %}
