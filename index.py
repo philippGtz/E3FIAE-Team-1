@@ -247,3 +247,60 @@ def orders():
 @bp_index.route('/anlage')
 def anlage():
     return render_template('anlage.html')
+
+@bp_index.route('/sapapi', methods=['POST'])
+def update_sap_terminnummer():
+    data = request.get_json()
+    bes_id = data.get('bes_id')
+    sap_terminnummer = data.get('sap_terminnummer')
+
+    if not bes_id or not sap_terminnummer:
+        return jsonify({'success': False, 'message': 'bes_id and sap_terminnummer are required.'}), 400
+
+    order = Orders.query.filter_by(bes_id=bes_id).first()
+    if not order:
+        return jsonify({'success': False, 'message': 'Order not found.'}), 404
+
+    try:
+        order.sap_terminnummer = sap_terminnummer
+        db.session.commit()
+        return jsonify({'success': True, 'message': 'SAP-Terminnummer updated successfully.'})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'success': False, 'message': f'Error updating SAP-Terminnummer: {str(e)}'}), 500
+
+
+@bp_index.route('/sapapi', methods=['GET'])
+def get_orders_without_sap_terminnummer():
+    orders = Orders.query.filter(Orders.sap_terminnummer.is_(None)).all()
+    print(f"Orders without SAP-Terminnummer: {orders}")
+    orders_data = [order.__dict__ for order in orders]
+    for order in orders_data:
+        order.pop('_sa_instance_state', None)
+    return jsonify(orders_data)
+
+
+@bp_index.route('/sapapi', methods=['PUT'])
+def update_order_status_and_delivery():
+    data = request.get_json()
+    sap_terminnummer = data.get('sap_terminnummer')
+    status = data.get('status')
+    delivery_date = data.get('delivery_date')
+
+    if not sap_terminnummer:
+        return jsonify({'success': False, 'message': 'sap_terminnummer is required.'}), 400
+
+    order = Orders.query.filter_by(sap_terminnummer=sap_terminnummer).first()
+    if not order:
+        return jsonify({'success': False, 'message': 'Order not found.'}), 404
+
+    try:
+        if status:
+            order.status = status
+        if delivery_date:
+            order.delivery_date = delivery_date
+        db.session.commit()
+        return jsonify({'success': True, 'message': 'Order updated successfully.'})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'success': False, 'message': f'Error updating order: {str(e)}'}), 500

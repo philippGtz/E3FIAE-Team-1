@@ -29,7 +29,7 @@ class Users(db.Model):
 
 class Orders(db.Model):
     __tablename__ = "orders"
-    order_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    bes_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     bc_id = db.Column(db.Integer, db.ForeignKey('bike_computers.bc_id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)

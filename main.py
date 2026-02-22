@@ -78,7 +78,7 @@ def export_csv():
         delivery_date = order.delivery_date.strftime('%d.%m.%Y') if order.delivery_date else 'N/A'
         status = order.order_status if order.order_status else filter_option
         
-        csv_writer.writerow([order.order_id, bike_name, order.quantity, sap_term, delivery_date, status])
+        csv_writer.writerow([order.bes_id, bike_name, order.quantity, sap_term, delivery_date, status])
     
     csv_buffer.seek(0)
     byte_buffer = io.BytesIO(csv_buffer.getvalue().encode('utf-8'))

@@ -206,7 +206,7 @@ def initialize_database(app):
 
         bestellung = Orders(
             user_id=1,
-            order_id=1,
+            bes_id=1,
             bc_id=1,
             quantity=2
         )
