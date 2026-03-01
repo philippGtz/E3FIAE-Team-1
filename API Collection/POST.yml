@@ -6,6 +6,13 @@ info:
 http:
   method: POST
   url: http://127.0.0.1:8899/sapapi
+  body:
+    type: form-urlencoded
+    data:
+      - name: bse_id
+        value: "1"
+      - name: sap_terminnummer
+        value: "31114"
   auth: inherit
 
 settings:

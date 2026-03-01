@@ -250,9 +250,9 @@ def anlage():
 
 @bp_index.route('/sapapi', methods=['POST'])
 def update_sap_terminnummer():
-    data = request.get_json()
-    bes_id = data.get('bes_id')
-    sap_terminnummer = data.get('sap_terminnummer')
+    bes_id = request.form.get('bes_id')
+    sap_terminnummer = request.form.get('sap_terminnummer')
+    print(f"Received data: bes_id={bes_id}, sap_terminnummer={sap_terminnummer}")
 
     if not bes_id or not sap_terminnummer:
         return jsonify({'success': False, 'message': 'bes_id and sap_terminnummer are required.'}), 400
@@ -264,7 +264,7 @@ def update_sap_terminnummer():
     try:
         order.sap_terminnummer = sap_terminnummer
         db.session.commit()
-        return jsonify({'success': True, 'message': 'SAP-Terminnummer updated successfully.'})
+        return jsonify({'success': True, 'message': f'Bestellung {bes_id} erfolgreich mit SAP-Terminnummer {sap_terminnummer} aktualisiert.'})
     except Exception as e:
         db.session.rollback()
         return jsonify({'success': False, 'message': f'Error updating SAP-Terminnummer: {str(e)}'}), 500
@@ -282,10 +282,10 @@ def get_orders_without_sap_terminnummer():
 
 @bp_index.route('/sapapi', methods=['PUT'])
 def update_order_status_and_delivery():
-    data = request.get_json()
-    sap_terminnummer = data.get('sap_terminnummer')
-    status = data.get('status')
-    delivery_date = data.get('delivery_date')
+    sap_terminnummer = request.form.get('sap_terminnummer')
+    status = request.form.get('status')
+    delivery_date = request.form.get('delivery_date')
+    print(f"Received data for update: sap_terminnummer={sap_terminnummer}, status={status}, delivery_date={delivery_date}")
 
     if not sap_terminnummer:
         return jsonify({'success': False, 'message': 'sap_terminnummer is required.'}), 400

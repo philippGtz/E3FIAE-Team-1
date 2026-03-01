@@ -5,7 +5,17 @@ info:
 
 http:
   method: PUT
-  url: http://127.0.0.1:8899/sapapi
+  url: http://127.0.0.1:8899/sapapi?sap_terminnummer=31114&bes_status=super!!!&bes_lieferdatum=2001-01-22
+  params:
+    - name: sap_terminnummer
+      value: "31114"
+      type: query
+    - name: bes_status
+      value: super!!!
+      type: query
+    - name: bes_lieferdatum
+      value: 2001-01-22
+      type: query
   auth: inherit
 
 settings:
