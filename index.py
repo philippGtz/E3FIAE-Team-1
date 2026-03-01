@@ -252,14 +252,13 @@ def anlage():
 def update_sap_terminnummer():
     bes_id = request.form.get('bes_id')
     sap_terminnummer = request.form.get('sap_terminnummer')
-    print(f"Received data: bes_id={bes_id}, sap_terminnummer={sap_terminnummer}")
 
     if not bes_id or not sap_terminnummer:
-        return jsonify({'success': False, 'message': 'bes_id and sap_terminnummer are required.'}), 400
+        return jsonify({'success': False, 'message': 'bes_id und sap_terminnummer sind erforderlich.'}), 400
 
     order = Orders.query.filter_by(bes_id=bes_id).first()
     if not order:
-        return jsonify({'success': False, 'message': 'Order not found.'}), 404
+        return jsonify({'success': False, 'message': 'Bestellung nicht gefunden.'}), 404
 
     try:
         order.sap_terminnummer = sap_terminnummer
@@ -267,13 +266,12 @@ def update_sap_terminnummer():
         return jsonify({'success': True, 'message': f'Bestellung {bes_id} erfolgreich mit SAP-Terminnummer {sap_terminnummer} aktualisiert.'})
     except Exception as e:
         db.session.rollback()
-        return jsonify({'success': False, 'message': f'Error updating SAP-Terminnummer: {str(e)}'}), 500
+        return jsonify({'success': False, 'message': f'Fehler beim Aktualisieren der SAP-Terminnummer: {str(e)}'}), 500
 
 
 @bp_index.route('/sapapi', methods=['GET'])
 def get_orders_without_sap_terminnummer():
     orders = Orders.query.filter(Orders.sap_terminnummer.is_(None)).all()
-    print(f"Orders without SAP-Terminnummer: {orders}")
     orders_data = [order.__dict__ for order in orders]
     for order in orders_data:
         order.pop('_sa_instance_state', None)
@@ -285,14 +283,13 @@ def update_order_status_and_delivery():
     sap_terminnummer = request.form.get('sap_terminnummer')
     status = request.form.get('status')
     delivery_date = request.form.get('delivery_date')
-    print(f"Received data for update: sap_terminnummer={sap_terminnummer}, status={status}, delivery_date={delivery_date}")
 
     if not sap_terminnummer:
-        return jsonify({'success': False, 'message': 'sap_terminnummer is required.'}), 400
+        return jsonify({'success': False, 'message': 'sap_terminnummer ist erforderlich.'}), 400
 
     order = Orders.query.filter_by(sap_terminnummer=sap_terminnummer).first()
     if not order:
-        return jsonify({'success': False, 'message': 'Order not found.'}), 404
+        return jsonify({'success': False, 'message': 'Bestellung nicht gefunden.'}), 404
 
     try:
         if status:
@@ -300,7 +297,7 @@ def update_order_status_and_delivery():
         if delivery_date:
             order.delivery_date = delivery_date
         db.session.commit()
-        return jsonify({'success': True, 'message': 'Order updated successfully.'})
+        return jsonify({'success': True, 'message': f'Bestellung mit SAP-Terminnummer {sap_terminnummer} erfolgreich aktualisiert.'})
     except Exception as e:
         db.session.rollback()
-        return jsonify({'success': False, 'message': f'Error updating order: {str(e)}'}), 500
+        return jsonify({'success': False, 'message': f'Fehler beim Aktualisieren der Bestellung: {str(e)}'}), 500
