@@ -34,7 +34,7 @@ class Orders(db.Model):
     bc_id = db.Column(db.Integer, db.ForeignKey('bike_computers.bc_id'), nullable=False)
     bes_menge = db.Column(db.Integer, nullable=False)
     bes_sap_doc_number = db.Column(db.Integer, nullable=True)
-    bes_status = db.Column(db.String(120), nullable=True)
+    bes_status = db.Column(db.String(120), nullable=True, default="offen")
     bes_lieferdatum = db.Column(db.String(120), nullable=True)
     
     @property

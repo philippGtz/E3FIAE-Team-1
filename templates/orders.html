@@ -81,6 +81,21 @@
             <span class="label">Menge:</span>
             <span class="value">{{ item.order.bes_menge }} x</span>
           </div>
+
+          <div class="detail-row">
+            <span class="label">SAP-Terminnummer:</span>
+            <span class="value">{{ item.order.bes_sap_doc_number }}</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Bestellstatus:</span>
+            <span class="value">{{ item.order.bes_status }}</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Lieferdatum:</span>
+            <span class="value">{{ item.order.bes_lieferdatum }}</span>
+          </div>
         </div>
       </div>
       {% endfor %}

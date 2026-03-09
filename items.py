@@ -208,7 +208,8 @@ def initialize_database(app):
             user_id=1,
             bes_id=1,
             bc_id=1,
-            bes_menge=2
+            bes_menge=2,
+            bes_status = "offen",
         )
 
         db.session.add(user)
