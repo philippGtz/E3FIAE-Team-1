@@ -11,7 +11,7 @@ http:
     data:
       - name: bse_id
         value: "1"
-      - name: sap_terminnummer
+      - name: bes_sap_doc_number
         value: "31114"
   auth: inherit
 

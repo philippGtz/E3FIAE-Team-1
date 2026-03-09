@@ -59,11 +59,11 @@ def export_csv():
     
     filtered_orders = []
     for order in all_orders:
-        if filter_option == 'offen' and order.sap_terminnummer is None:
+        if filter_option == 'offen' and order.bes_sap_doc_number is None:
             filtered_orders.append(order)
-        elif filter_option == 'erfasst' and order.sap_terminnummer is not None and order.delivery_date is None:
+        elif filter_option == 'erfasst' and order.bes_sap_doc_number is not None and order.bes_lieferdatum is None:
             filtered_orders.append(order)
-        elif filter_option == 'erledigt' and order.delivery_date is not None:
+        elif filter_option == 'erledigt' and order.bes_lieferdatum is not None:
             filtered_orders.append(order)
     
     csv_buffer = io.StringIO()
@@ -72,13 +72,13 @@ def export_csv():
     
     for order in filtered_orders:
         bike_computer = BikeComputers.query.filter_by(bc_id=order.bc_id).first()
-        bike_name = bike_computer.bc_material if bike_computer else 'Unknown'
+        bike_name = bike_computer.bes_art_code if bike_computer else 'Unknown'
         
-        sap_term = order.sap_terminnummer if order.sap_terminnummer else 'N/A'
-        delivery_date = order.delivery_date.strftime('%d.%m.%Y') if order.delivery_date else 'N/A'
-        status = order.order_status if order.order_status else filter_option
+        sap_term = order.bes_sap_doc_number if order.bes_sap_doc_number else 'N/A'
+        bes_lieferdatum = order.bes_lieferdatum.strftime('%d.%m.%Y') if order.bes_lieferdatum else 'N/A'
+        status = order.bes_status if order.bes_status else filter_option
         
-        csv_writer.writerow([order.bes_id, bike_name, order.quantity, sap_term, delivery_date, status])
+        csv_writer.writerow([order.bes_id, bike_name, order.bes_menge, sap_term, bes_lieferdatum, status])
     
     csv_buffer.seek(0)
     byte_buffer = io.BytesIO(csv_buffer.getvalue().encode('utf-8'))

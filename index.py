@@ -189,13 +189,13 @@ def place_order():
         return redirect(url_for('index.profile'))
     
     bc_id = request.form.get('bc_id')
-    quantity = request.form.get('quantity')
+    bes_menge = request.form.get('bes_menge')
     
     try:
         bc_id = int(bc_id)
-        quantity = int(quantity)
+        bes_menge = int(bes_menge)
         
-        if quantity <= 0:
+        if bes_menge <= 0:
             flash('Die Menge muss größer als 0 sein.', 'danger')
             return redirect(url_for('index.detail', item_id=bc_id))
         
@@ -209,13 +209,13 @@ def place_order():
         new_order = Orders(
             user_id=user_id,
             bc_id=bc_id,
-            quantity=quantity
+            bes_menge=bes_menge
         )
         
         db.session.add(new_order)
         db.session.commit()
         
-        flash(f'Bestellung erfolgreich! {quantity} x {bike_computer.bc_material} wurde bestellt.', 'success')
+        flash(f'Bestellung erfolgreich! {bes_menge} x {bike_computer.bes_art_code} wurde bestellt.', 'success')
         return redirect(url_for('index.orders'))
     
     except (ValueError, TypeError):
@@ -249,55 +249,68 @@ def anlage():
     return render_template('anlage.html')
 
 @bp_index.route('/sapapi', methods=['POST'])
-def update_sap_terminnummer():
+def update_bes_sap_doc_number():
     bes_id = request.form.get('bes_id')
-    sap_terminnummer = request.form.get('sap_terminnummer')
+    bes_sap_doc_number = request.form.get('sap_terminnummer')
 
-    if not bes_id or not sap_terminnummer:
-        return jsonify({'success': False, 'message': 'bes_id und sap_terminnummer sind erforderlich.'}), 400
+    if not bes_id or not bes_sap_doc_number:
+        return jsonify({'success': False, 'message': 'bes_id und bes_sap_doc_number sind erforderlich.'}), 400
 
     order = Orders.query.filter_by(bes_id=bes_id).first()
     if not order:
         return jsonify({'success': False, 'message': 'Bestellung nicht gefunden.'}), 404
 
     try:
-        order.sap_terminnummer = sap_terminnummer
+        order.bes_sap_doc_number = bes_sap_doc_number
         db.session.commit()
-        return jsonify({'success': True, 'message': f'Bestellung {bes_id} erfolgreich mit SAP-Terminnummer {sap_terminnummer} aktualisiert.'})
+        return jsonify({'success': True, 'message': f'Bestellung {bes_id} erfolgreich mit SAP-Terminnummer {bes_sap_doc_number} aktualisiert.'})
     except Exception as e:
         db.session.rollback()
         return jsonify({'success': False, 'message': f'Fehler beim Aktualisieren der SAP-Terminnummer: {str(e)}'}), 500
 
 
 @bp_index.route('/sapapi', methods=['GET'])
-def get_orders_without_sap_terminnummer():
-    orders = Orders.query.filter(Orders.sap_terminnummer.is_(None)).all()
-    orders_data = [order.__dict__ for order in orders]
-    for order in orders_data:
-        order.pop('_sa_instance_state', None)
+def get_orders_without_bes_sap_doc_number():
+    orders = Orders.query.filter(Orders.bes_sap_doc_number.is_(None)).all()
+    orders_data = []
+    for order in orders:
+        bike_computer = BikeComputers.query.filter_by(bc_id=order.bc_id).first()
+        order_data = order.__dict__
+        order_data.pop('_sa_instance_state', None)
+        if bike_computer:
+            order_data.update({
+                'bes_art_code': bike_computer.bes_art_code,
+                'bes_art_code_desc_short': bike_computer.bes_art_code_desc_short,
+                'bc_language': bike_computer.bc_language,
+                'bes_art_code_desc_long': bike_computer.bes_art_code_desc_long,
+                'bc_image': bike_computer.bc_image
+            })
+        orders_data.append(order_data)
     return jsonify(orders_data)
 
 
 @bp_index.route('/sapapi', methods=['PUT'])
 def update_order_status_and_delivery():
-    sap_terminnummer = request.form.get('sap_terminnummer')
-    status = request.form.get('status')
-    delivery_date = request.form.get('delivery_date')
+    bes_sap_doc_number = request.form.get('sap_terminnummer')
+    bes_status = request.form.get('bes_status')
+    bes_lieferdatum = request.form.get('bes_lieferdatum')
+    print("best_status:", bes_status)
+    print("best_lieferdatum:", bes_lieferdatum)
 
-    if not sap_terminnummer:
-        return jsonify({'success': False, 'message': 'sap_terminnummer ist erforderlich.'}), 400
+    if not bes_sap_doc_number:
+        return jsonify({'success': False, 'message': 'bes_sap_doc_number ist erforderlich.'}), 400
 
-    order = Orders.query.filter_by(sap_terminnummer=sap_terminnummer).first()
+    order = Orders.query.filter_by(bes_sap_doc_number=bes_sap_doc_number).first()
     if not order:
         return jsonify({'success': False, 'message': 'Bestellung nicht gefunden.'}), 404
 
     try:
-        if status:
-            order.status = status
-        if delivery_date:
-            order.delivery_date = delivery_date
+        if bes_status:
+            order.bes_status = bes_status
+        if bes_lieferdatum:
+            order.bes_lieferdatum = bes_lieferdatum
         db.session.commit()
-        return jsonify({'success': True, 'message': f'Bestellung mit SAP-Terminnummer {sap_terminnummer} erfolgreich aktualisiert.'})
+        return jsonify({'success': True, 'message': f'Bestellung mit SAP-Terminnummer {bes_sap_doc_number} erfolgreich aktualisiert.'})
     except Exception as e:
         db.session.rollback()
         return jsonify({'success': False, 'message': f'Fehler beim Aktualisieren der Bestellung: {str(e)}'}), 500

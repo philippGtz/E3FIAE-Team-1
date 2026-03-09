@@ -11,177 +11,177 @@ def initialize_database(app):
 
         items = [
                 BikeComputers(
-                    bc_material="GPKO3000",
-                    bc_material_desc_short="GPS-RADCOMPUTER KONFIGURIERBAR",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GPKO3000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER KONFIGURIERBAR",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GPKO4000",
-                    bc_material_desc_short="GPS-RADCOMPUTER KONFIGURIERBAR SERIALNR.",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GPKO4000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER KONFIGURIERBAR SERIALNR.",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GORK1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 16GB (BLAU)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GORK1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 16GB (BLAU)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-1.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOSK1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 16GB (SCHWARZ)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOSK1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 16GB (SCHWARZ)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOWK1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 16GB (WEISS)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOWK1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 16GB (WEISS)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOBM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (BLAU)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOBM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (BLAU)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-1.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GORM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (ROT)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GORM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (ROT)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOSM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (SCHWARZ)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOSM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (SCHWARZ)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOWM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (WEISS)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOWM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 32GB (WEISS)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOBL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (BLAU)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOBL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (BLAU)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-1.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GORL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (ROT)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GORL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (ROT)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOSL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (SCHWARZ)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOSL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (SCHWARZ)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GOWL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (WEISS)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GOWL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER OFFROAD 64GB (WEISS)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRBK1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 16GB (BLAU)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRBK1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 16GB (BLAU)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-1.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRRK1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 16GB (ROT)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRRK1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 16GB (ROT)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRSK1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 16GB (SCHWARZ)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRSK1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 16GB (SCHWARZ)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRWK1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 16GB (WEISS)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRWK1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 16GB (WEISS)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRBM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 32GB (BLAU)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRBM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 32GB (BLAU)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-1.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRRM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 32GB (ROT)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRRM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 32GB (ROT)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRSM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 32GB (SCHWARZ)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRSM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 32GB (SCHWARZ)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRWM1000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 32GB (WEISS)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRWM1000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 32GB (WEISS)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRBL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 64GB (BLAU)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRBL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 64GB (BLAU)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-1.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRRL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 64GB (ROT)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRRL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 64GB (ROT)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-3.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRSL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 64GB (SCHWARZ)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRSL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 64GB (SCHWARZ)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
                 BikeComputers(
-                    bc_material="GRWL2000",
-                    bc_material_desc_short="GPS-RADCOMPUTER ROAD 64GB (WEISS)",
-                    bc_material_desc_long="Langbeschreibung Bsp",
+                    bes_art_code="GRWL2000",
+                    bes_art_code_desc_short="GPS-RADCOMPUTER ROAD 64GB (WEISS)",
+                    bes_art_code_desc_long="Langbeschreibung Bsp",
                     bc_language="DE",
                     bc_image="fc-2.jpg"
                 ),
@@ -208,7 +208,7 @@ def initialize_database(app):
             user_id=1,
             bes_id=1,
             bc_id=1,
-            quantity=2
+            bes_menge=2
         )
 
         db.session.add(user)

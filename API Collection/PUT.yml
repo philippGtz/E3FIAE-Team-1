@@ -5,9 +5,9 @@ info:
 
 http:
   method: PUT
-  url: http://127.0.0.1:8899/sapapi?sap_terminnummer=31114&bes_status=super!!!&bes_lieferdatum=2001-01-22
+  url: http://127.0.0.1:8899/sapapi?bes_sap_doc_number=31114&bes_status=super!!!&bes_lieferdatum=2001-01-22
   params:
-    - name: sap_terminnummer
+    - name: bes_sap_doc_number
       value: "31114"
       type: query
     - name: bes_status

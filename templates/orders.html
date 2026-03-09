@@ -47,7 +47,7 @@
           {% if item.bike_computer and item.bike_computer.bc_image %}
           <img
             src="{{ url_for('static', filename='images/' + item.bike_computer.bc_image) }}"
-            alt="{{ item.bike_computer.bc_material }}"
+            alt="{{ item.bike_computer.bes_art_code }}"
           />
           {% else %}
           <div class="no-image">Kein Bild!</div>
@@ -62,7 +62,7 @@
           <div class="detail-row">
             <span class="label">Artikel:</span>
             <span class="value">
-              {% if item.bike_computer %} {{ item.bike_computer.bc_material }}
+              {% if item.bike_computer %} {{ item.bike_computer.bes_art_code }}
               {% else %} Artikel #{{ item.order.bc_id }} {% endif %}
             </span>
           </div>
@@ -71,15 +71,15 @@
             <span class="label">Beschreibung:</span>
             <span class="value">
               {% if item.bike_computer and
-              item.bike_computer.bc_material_desc_short %} {{
-              item.bike_computer.bc_material_desc_short }} {% else %} - {% endif
+              item.bike_computer.bes_art_code_desc_short %} {{
+              item.bike_computer.bes_art_code_desc_short }} {% else %} - {% endif
               %}
             </span>
           </div>
 
           <div class="detail-row">
             <span class="label">Menge:</span>
-            <span class="value">{{ item.order.quantity }} x</span>
+            <span class="value">{{ item.order.bes_menge }} x</span>
           </div>
         </div>
       </div>
