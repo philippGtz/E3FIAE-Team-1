@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for, flash, session, jsonify
 from models import Users, db, BikeComputers, Orders
+from datetime import datetime
 
 bp_index = Blueprint('index', __name__)
 
@@ -308,6 +309,13 @@ def update_order_status_and_delivery():
         if bes_status:
             order.bes_status = bes_status
         if bes_lieferdatum:
+            # Convert ISO format (YYYY-MM-DD) to German format (DD.MM.YYYY)
+            try:
+                date_obj = datetime.strptime(bes_lieferdatum, '%Y-%m-%d')
+                bes_lieferdatum = date_obj.strftime('%d.%m.%Y')
+            except ValueError:
+                # If date doesn't match format, use as-is
+                pass
             order.bes_lieferdatum = bes_lieferdatum
         db.session.commit()
         return jsonify({'success': True, 'message': f'Bestellung mit SAP-Terminnummer {bes_sap_doc_number} erfolgreich aktualisiert.'})
