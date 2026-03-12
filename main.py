@@ -75,7 +75,7 @@ def export_csv():
         bike_name = bike_computer.bes_art_code if bike_computer else 'Unknown'
         
         sap_term = order.bes_sap_doc_number if order.bes_sap_doc_number else 'N/A'
-        bes_lieferdatum = order.bes_lieferdatum.strftime('%d.%m.%Y') if order.bes_lieferdatum else 'N/A'
+        bes_lieferdatum = order.bes_lieferdatum if order.bes_lieferdatum else 'N/A'
         status = order.bes_status if order.bes_status else filter_option
         
         csv_writer.writerow([order.bes_id, bike_name, order.bes_menge, sap_term, bes_lieferdatum, status])
