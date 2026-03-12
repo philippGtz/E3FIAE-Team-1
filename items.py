@@ -6,7 +6,9 @@ from config import Config
 def initialize_database(app):
     with app.app_context():
         print('Hier in app.app_context()') 
-        db.drop_all() 
+        if app.config.get('RESET_DATABASE', False):
+            print('Datenbank wird zurückgesetzt...')
+            db.drop_all()
         db.create_all()
 
         items = [
@@ -190,30 +192,35 @@ def initialize_database(app):
         db.session.add_all(items)
         db.session.commit()
 
-        user = Users(
-            email="admin@example.com",
-            first_name="Admin",
-            last_name="User",
-            password="password",
-            address="Parkstrasse",
-            house_number="7",
-            postal_code="69168",
-            city="Wiesloch",
-            country="Germany",
-            iban="DE89370400440532013000",
-            phone_number="01234567890"
-        )
+        # Überprüfe, ob der Admin-User bereits existiert
+        existing_user = Users.query.filter_by(email="admin@example.com").first()
+        if not existing_user:
+            user = Users(
+                email="admin@example.com",
+                first_name="Admin",
+                last_name="User",
+                password="password",
+                address="Parkstrasse",
+                house_number="7",
+                postal_code="69168",
+                city="Wiesloch",
+                country="Germany",
+                iban="DE89370400440532013000",
+                phone_number="01234567890"
+            )
+            db.session.add(user)
+            db.session.commit()
 
-        bestellung = Orders(
-            user_id=1,
-            bes_id=1,
-            bc_id=1,
-            bes_menge=2,
-            bes_status = "offen",
-        )
-
-        db.session.add(user)
-        db.session.commit()
-
-        db.session.add(bestellung)  # Add the order to the session
+        # Überprüfe, ob die Bestellung bereits existiert
+        existing_order = Orders.query.filter_by(user_id=1, bes_id=1).first()
+        if not existing_order:
+            bestellung = Orders(
+                user_id=1,
+                bes_id=1,
+                bc_id=1,
+                bes_menge=2,
+                bes_status = "offen",
+            )
+            db.session.add(bestellung)
+            db.session.commit()
         db.session.commit()  # Commit the order to the database
