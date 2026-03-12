@@ -172,6 +172,7 @@
           <li><a href="{{ url_for('index.orders') }}" {% if request.endpoint == 'index.orders' %}class="active"{% endif %}>Bestellungen</a></li>
           <li><a href="{{ url_for('index.anlage') }}" {% if request.endpoint == 'index.anlage' %}class="active"{% endif %}>Anlage</a></li>
           <li><a href="{{ url_for('index.profile') }}" {% if request.endpoint == 'index.profile' %}class="active"{% endif %}>Profil</a></li>
+          <li><a href="{{ url_for('index.chatbot') }}" {% if request.endpoint == 'index.chatbot' %}class="active"{% endif %}>Chatbot</a></li>
           <li><a href="#" id="about-btn-header">About</a></li>
         </ul>
       </nav>
@@ -196,6 +197,7 @@
       <li><a href="{{ url_for('index.orders') }}" {% if request.endpoint == 'index.orders' %}class="active"{% endif %}>Bestellungen</a></li>
       <li><a href="{{ url_for('index.anlage') }}" {% if request.endpoint == 'index.anlage' %}class="active"{% endif %}>Anlage</a></li>
       <li><a href="{{ url_for('index.profile') }}" {% if request.endpoint == 'index.profile' %}class="active"{% endif %}>Profil</a></li>
+      <li><a href="{{ url_for('index.chatbot') }}" {% if request.endpoint == 'index.chatbot' %}class="active"{% endif %}>Chatbot</a></li>
       <li><a href="#" id="about-btn">About</a></li>
     </ul>
 

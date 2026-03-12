@@ -314,3 +314,8 @@ def update_order_status_and_delivery():
     except Exception as e:
         db.session.rollback()
         return jsonify({'success': False, 'message': f'Fehler beim Aktualisieren der Bestellung: {str(e)}'}), 500
+
+
+@bp_index.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html')
