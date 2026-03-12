@@ -36,6 +36,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///WebshopDB.sqlite'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     CHATBOT_URL =
+    RESET_DATABASE =
 ```
 
 ### 2. Virtual Environment installieren und starten
