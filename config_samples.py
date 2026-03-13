@@ -5,3 +5,5 @@ class Config:
     SECRET_KEY = ""
     SQLALCHEMY_DATABASE_URI = ''
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    CHATBOT_URL = ""
+    RESET_DATABASE = False
